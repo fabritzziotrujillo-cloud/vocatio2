@@ -1,0 +1,553 @@
+/* Momento de Inspiración - Diseño Moderno */
+:root {
+    --color-primario: #667eea;
+    --color-secundario: #764ba2;
+    --color-acento: #f093fb;
+    --color-morado-claro: #9B7EDE;
+    --color-rosa: #f5576c;
+    --color-blanco: #FFFFFF;
+    --color-texto: #2D3748;
+    --color-texto-suave: #718096;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Inter', -apple-system, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Partículas de Fondo Animadas */
+.particulas-fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    animation: particulas 15s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes particulas {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.container-inspiracion {
+    width: 100%;
+    max-width: 800px;
+    padding: 1.5rem;
+}
+
+/* Header Minimal */
+.header-minimal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.btn-salir-minimal {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--color-blanco);
+    padding: 0.8rem 1.5rem;
+    border-radius: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.icono-salir {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-salir-minimal:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(-3px);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-salir-minimal:hover .icono-salir {
+    transform: translateX(-3px);
+}
+
+.badge-test {
+    background: rgba(255, 255, 255, 0.25);
+    color: var(--color-blanco);
+    padding: 0.8rem 1.5rem;
+    border-radius: 15px;
+    font-weight: 600;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Progreso Container */
+.progreso-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.progreso-nivel-mini {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.info-nivel-mini {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 700;
+    color: var(--color-blanco);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.icono-nivel {
+    font-size: 1.8rem;
+    animation: pulsoSuave 2s ease-in-out infinite;
+}
+
+@keyframes pulsoSuave {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.texto-nivel-mini {
+    font-size: 1.1rem;
+}
+
+.progreso-numerico-mini {
+    font-weight: 700;
+    color: var(--color-blanco);
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.4rem 1rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.barra-progreso-mini {
+    height: 12px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progreso-fill-mini {
+    height: 100%;
+    background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.progreso-fill-mini::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    animation: brilloProgreso 2s ease-in-out infinite;
+}
+
+@keyframes brilloProgreso {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Tarjeta de Inspiración */
+.contenedor-inspiracion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 55vh;
+    position: relative;
+}
+
+/* Círculos de Brillo de Fondo */
+.circulo-brillo {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: flotarCirculo 8s ease-in-out infinite;
+}
+
+.circulo-1 {
+    width: 300px;
+    height: 300px;
+    background: rgba(240, 147, 251, 0.5);
+    top: -100px;
+    left: -100px;
+}
+
+.circulo-2 {
+    width: 250px;
+    height: 250px;
+    background: rgba(102, 126, 234, 0.5);
+    bottom: -80px;
+    right: -80px;
+    animation-delay: 2s;
+}
+
+@keyframes flotarCirculo {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(20px, 20px) scale(1.1); }
+}
+
+.tarjeta-inspiracion {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 40px;
+    padding: 0;
+    text-align: center;
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    max-width: 600px;
+    width: 100%;
+    animation: inspiracionAppear 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes inspiracionAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px) rotate(-5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0) rotate(0deg);
+    }
+}
+
+.contenido-inspiracion {
+    padding: 4rem 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Icono Principal */
+.icono-principal {
+    margin-bottom: 2rem;
+}
+
+.icono-circulo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 10px 40px rgba(102, 126, 234, 0.4),
+        0 0 0 15px rgba(102, 126, 234, 0.1),
+        0 0 0 30px rgba(102, 126, 234, 0.05);
+    animation: pulsoIcono 3s ease-in-out infinite;
+}
+
+@keyframes pulsoIcono {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 
+            0 10px 40px rgba(102, 126, 234, 0.4),
+            0 0 0 15px rgba(102, 126, 234, 0.1),
+            0 0 0 30px rgba(102, 126, 234, 0.05);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 
+            0 15px 50px rgba(102, 126, 234, 0.5),
+            0 0 0 20px rgba(102, 126, 234, 0.15),
+            0 0 0 40px rgba(102, 126, 234, 0.08);
+    }
+}
+
+.emoji-grande {
+    font-size: 4rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Título */
+.titulo-inspiracion {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    font-weight: 900;
+    color: var(--color-texto);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.palabra-animada {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: apareceTexto 0.6s ease forwards;
+    opacity: 0;
+}
+
+.palabra-animada:nth-child(1) { animation-delay: 0.2s; }
+.palabra-animada:nth-child(2) { animation-delay: 0.4s; }
+.palabra-animada:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes apareceTexto {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mensaje */
+.mensaje-container {
+    margin-bottom: 2.5rem;
+}
+
+.mensaje-inspiracion {
+    color: var(--color-texto);
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.mensaje-inspiracion strong {
+    color: #667eea;
+    font-weight: 700;
+}
+
+.submensaje {
+    color: var(--color-texto-suave);
+    font-size: 1rem;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.btn-continuar-inspiracion {
+    padding: 1.3rem 3rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--color-blanco);
+    border: none;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 
+        0 10px 30px rgba(102, 126, 234, 0.4),
+        0 0 0 0 rgba(102, 126, 234, 0.5);
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.btn-continuar-inspiracion::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.btn-continuar-inspiracion:hover::before {
+    left: 100%;
+}
+
+.btn-continuar-inspiracion:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 15px 40px rgba(102, 126, 234, 0.5),
+        0 0 0 8px rgba(102, 126, 234, 0.2);
+}
+
+.icono-boton {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-continuar-inspiracion:hover .icono-boton {
+    transform: translateX(5px);
+}
+
+/* Decoración de Estrellas */
+.decoracion-estrellas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.estrella {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0;
+    animation: flotarEstrella 8s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.estrella-1 {
+    top: 10%;
+    left: 15%;
+    animation-delay: 0s;
+    font-size: 2.5rem;
+}
+
+.estrella-2 {
+    top: 20%;
+    right: 20%;
+    animation-delay: 1s;
+}
+
+.estrella-3 {
+    bottom: 25%;
+    left: 10%;
+    animation-delay: 2s;
+    font-size: 1.8rem;
+}
+
+.estrella-4 {
+    bottom: 15%;
+    right: 15%;
+    animation-delay: 3s;
+}
+
+.estrella-5 {
+    top: 50%;
+    left: 5%;
+    animation-delay: 4s;
+    font-size: 2.2rem;
+}
+
+.estrella-6 {
+    top: 60%;
+    right: 8%;
+    animation-delay: 5s;
+}
+
+@keyframes flotarEstrella {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(0) rotate(0deg) scale(0.8);
+    }
+    10% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-30px) rotate(180deg) scale(1.2);
+    }
+    90% {
+        opacity: 0.8;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container-inspiracion {
+        padding: 1rem;
+    }
+    
+    .progreso-container {
+        padding: 1rem;
+    }
+    
+    .texto-nivel-mini {
+        font-size: 0.9rem;
+    }
+    
+    .progreso-numerico-mini {
+        font-size: 1rem;
+        padding: 0.3rem 0.8rem;
+    }
+    
+    .contenido-inspiracion {
+        padding: 3rem 2rem;
+    }
+    
+    .icono-circulo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .emoji-grande {
+        font-size: 3rem;
+    }
+    
+    .titulo-inspiracion {
+        font-size: 2.2rem;
+    }
+    
+    .mensaje-inspiracion {
+        font-size: 1.1rem;
+    }
+    
+    .submensaje {
+        font-size: 0.9rem;
+    }
+    
+    .btn-continuar-inspiracion {
+        padding: 1.1rem 2rem;
+        font-size: 1.1rem;
+    }
+    
+    .estrella {
+        font-size: 1.5rem;
+    }
+    
+    .circulo-brillo {
+        width: 200px !important;
+        height: 200px !important;
+    }
+}

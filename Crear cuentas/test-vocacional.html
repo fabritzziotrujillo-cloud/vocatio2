@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocatio - Test Vocacional</title>
+    <link rel="stylesheet" href="css/test-vocacional.css">
+</head>
+<body>
+    <div class="container-test">
+        <header class="header-test">
+            <button class="btn-salir-test" onclick="window.location.href='dashboard.html'">✕ Salir</button>
+            <button class="btn-test-vocal">🎮 Test Vocacional</button>
+        </header>
+
+        <!-- Progreso del nivel -->
+        <div class="barra-progreso-nivel">
+            <div class="info-nivel">
+                <span class="icono-nivel">🎨</span>
+                <span class="texto-nivel">Nivel 3: Tu Creatividad</span>
+            </div>
+            <div class="progreso-numerico">12/23</div>
+        </div>
+        <div class="barra-progreso">
+            <div class="progreso-fill" style="width: 52%;"></div>
+        </div>
+
+        <!-- Tarjeta de pregunta -->
+        <main class="contenedor-pregunta">
+            <div class="tarjeta-pregunta">
+                <div class="imagen-pregunta">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=400&fit=crop" alt="Naturaleza y actividades">
+                    <div class="overlay-imagen"></div>
+                </div>
+                
+                <div class="contenido-pregunta">
+                    <h2 class="pregunta-titulo">¿Te ves aquí?</h2>
+                    <p class="pregunta-descripcion">Naturaleza y actividades al aire libre</p>
+                    
+                    <div class="opciones-respuesta">
+                        <button class="btn-respuesta btn-no">
+                            <span class="icono-respuesta">👎</span>
+                            <span class="texto-respuesta">No</span>
+                        </button>
+                        <button class="btn-respuesta btn-si">
+                            <span class="icono-respuesta">👍</span>
+                            <span class="texto-respuesta">Sí</span>
+                        </button>
+                    </div>
+
+                    <div class="feedback-area">
+                        <button class="btn-omitir">
+                            👋 Omitirr 👋
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Modal de nivel completado (oculto por defecto) -->
+        <div class="modal-nivel-completado" style="display: none;">
+            <div class="modal-contenido">
+                <div class="icono-completado">🔍</div>
+                <h2>¡Nivel 1<br>Completado!</h2>
+                <div class="resultado-nivel">
+                    <div class="icono-resultado">🎯</div>
+                    <p class="titulo-resultado">"Explorador Curioso"</p>
+                    <p class="descripcion-resultado">¡Has desbloqueado la habilidad: tus intereses únicos!</p>
+                </div>
+                <div class="barra-progreso-total">
+                    <p class="texto-progreso">Progreso total: 4/23 preguntas</p>
+                    <div class="barra-progreso">
+                        <div class="progreso-fill" style="width: 17%;"></div>
+                    </div>
+                </div>
+                <button class="btn-continuar">Continuar al Siguiente Nivel →</button>
+            </div>
+        </div>
+
+        <!-- Ejemplo de feedback instantáneo -->
+        <div class="feedback-instantaneo me-identifico" style="display: none;">
+            <div class="feedback-contenido">
+                <span class="icono-feedback">✓</span>
+                <span class="texto-feedback">¡ME IDENTIFICO!</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulación de interacciones
+        document.querySelectorAll('.btn-respuesta').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Mostrar feedback
+                const feedback = document.querySelector('.feedback-instantaneo');
+                const feedbackTexto = feedback.querySelector('.texto-feedback');
+                
+                // Cambiar el texto según el botón presionado
+                if (this.classList.contains('btn-no')) {
+                    feedbackTexto.textContent = '¡NO ME IDENTIFICO!';
+                    feedback.classList.add('no-identifico');
+                    feedback.classList.remove('me-identifico');
+                } else if (this.classList.contains('btn-si')) {
+                    feedbackTexto.textContent = '¡ME IDENTIFICO!';
+                    feedback.classList.add('me-identifico');
+                    feedback.classList.remove('no-identifico');
+                }
+                
+                feedback.style.display = 'flex';
+                
+                setTimeout(() => {
+                    feedback.style.display = 'none';
+                    // Aquí iría la lógica para cargar la siguiente pregunta
+                }, 1500);
+            });
+        });
+        
+        // Animación de la tarjeta cuando se pasa por "Omitir"
+        const btnOmitir = document.querySelector('.btn-omitir');
+        const tarjeta = document.querySelector('.tarjeta-pregunta');
+        
+        if (btnOmitir && tarjeta) {
+            btnOmitir.addEventListener('mouseenter', function() {
+                tarjeta.style.transform = 'translateX(-30px) rotate(-5deg)';
+                tarjeta.style.opacity = '0.7';
+            });
+            
+            btnOmitir.addEventListener('mouseleave', function() {
+                tarjeta.style.transform = 'translateX(0) rotate(0deg)';
+                tarjeta.style.opacity = '1';
+            });
+        }
+    </script>
+</body>
+</html>

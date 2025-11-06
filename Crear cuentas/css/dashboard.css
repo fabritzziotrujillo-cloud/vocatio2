@@ -1,0 +1,390 @@
+/* Dashboard - Gradientes Morados y Azules */
+:root {
+    --color-primario: #667eea;        /* Azul-morado principal */
+    --color-secundario: #764ba2;      /* Morado profundo */
+    --color-acento: #f093fb;          /* Rosa-morado brillante */
+    --color-morado: #9B7EDE;          /* Morado suave */
+    --color-rosa: #f5576c;            /* Rosa vibrante */
+    --color-fondo: #f8f9ff;           /* Muy claro con tinte */
+    --color-blanco: #FFFFFF;
+    --color-texto: #2D3748;
+    --color-texto-suave: #718096;
+    --sombra: 0 4px 15px rgba(102, 126, 234, 0.12);
+    --sombra-hover: 0 8px 25px rgba(102, 126, 234, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    color: var(--color-texto);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="1.5" fill="white" opacity="0.1"/></svg>');
+    animation: floatPattern 30s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes floatPattern {
+    from { transform: translateY(0); }
+    to { transform: translateY(-60px); }
+}
+
+.container-dashboard {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.header-principal {
+    background: var(--color-blanco);
+    border-radius: 20px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--sombra);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.logo h1 {
+    color: var(--color-primario);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.navegacion {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-item {
+    padding: 0.7rem 1.2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--color-texto-suave);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-item:hover {
+    background: var(--color-fondo);
+    color: var(--color-primario);
+    transform: translateY(-2px);
+}
+
+.nav-item.activo {
+    background: linear-gradient(135deg, var(--color-primario), #1E9A9A);
+    color: var(--color-blanco);
+}
+
+.icono {
+    font-size: 1.2rem;
+}
+
+.btn-salir {
+    padding: 0.7rem 1.5rem;
+    border: 2px solid #E2E8F0;
+    background: var(--color-blanco);
+    color: var(--color-texto);
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-salir:hover {
+    background: #FEE;
+    border-color: #FCC;
+    color: #D00;
+}
+
+/* Contenido Principal */
+.contenido-principal {
+    padding: 1rem 0;
+}
+
+.bienvenida {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.bienvenida h2 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.subtitulo {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Tarjeta Principal Gamificada */
+.tarjeta-principal {
+    background: linear-gradient(135deg, #9B7EDE 0%, #7B5FC8 100%);
+    border-radius: 24px;
+    padding: 3rem;
+    margin-bottom: 2.5rem;
+    box-shadow: var(--sombra-hover);
+    position: relative;
+    overflow: hidden;
+    color: var(--color-blanco);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.tarjeta-principal::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.badge-nuevo {
+    display: inline-block;
+    background: var(--color-acento);
+    color: var(--color-texto);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(255, 209, 102, 0.4);
+}
+
+.icono-grande {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.tarjeta-principal h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.descripcion {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+}
+
+.caracteristicas {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.caracteristica {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+}
+
+.btn-comenzar {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-gamificado {
+    background: var(--color-blanco);
+    color: var(--color-morado);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-gamificado:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Grid de Opciones */
+.grid-opciones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.tarjeta-opcion {
+    background: var(--color-blanco);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--sombra);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.tarjeta-opcion:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-hover);
+    border-color: var(--color-primario);
+}
+
+.icono-opcion {
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+}
+
+.icono-opcion.tradicional {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.icono-opcion.resultados {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+
+.icono-opcion.historial {
+    background: linear-gradient(135deg, #a8edea, #764ba2);
+}
+
+.tarjeta-opcion h4 {
+    font-size: 1.4rem;
+    color: #1a202c;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+
+.tarjeta-opcion p {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+}
+
+.info-tiempo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #667eea;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.btn-acceder {
+    width: 100%;
+    padding: 0.9rem;
+    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+    color: var(--color-blanco);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-acceder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-acceder:hover::before {
+    left: 100%;
+}
+
+.btn-acceder:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Footer */
+.footer-dashboard {
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 3rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-principal {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .navegacion {
+        flex-direction: column;
+    }
+    
+    .nav-item {
+        justify-content: center;
+    }
+    
+    .bienvenida h2 {
+        font-size: 2rem;
+    }
+    
+    .tarjeta-principal {
+        padding: 2rem;
+    }
+    
+    .tarjeta-principal h3 {
+        font-size: 1.8rem;
+    }
+    
+    .grid-opciones {
+        grid-template-columns: 1fr;
+    }
+}
