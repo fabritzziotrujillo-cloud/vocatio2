@@ -321,6 +321,62 @@
   <script>
     lucide.createIcons();
   </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    lucide.createIcons();
+
+    // 🔸 Si en el futuro agregas formularios, este script validará campos requeridos
+    const forms = document.querySelectorAll("form");
+
+    forms.forEach(form => {
+      const inputs = form.querySelectorAll("input[required], textarea[required], select[required]");
+
+      // Crear o mostrar mensaje de error al lado del campo
+      const mostrarError = (input, mensaje) => {
+        let error = input.parentNode.querySelector(".error-msg");
+        if (!error) {
+          error = document.createElement("span");
+          error.classList.add("error-msg");
+          input.parentNode.appendChild(error);
+        }
+        error.textContent = mensaje;
+        input.classList.add("input-error");
+      };
+
+      // Limpiar el error
+      const limpiarError = (input) => {
+        let error = input.parentNode.querySelector(".error-msg");
+        if (error) error.textContent = "";
+        input.classList.remove("input-error");
+      };
+
+      // Validar en tiempo real mientras escribe
+      inputs.forEach(input => {
+        input.addEventListener("input", () => {
+          if (input.value.trim() !== "") {
+            limpiarError(input);
+          }
+        });
+      });
+
+      // Validar al enviar el formulario
+      form.addEventListener("submit", (e) => {
+        let valido = true;
+
+        inputs.forEach(input => {
+          if (input.value.trim() === "") {
+            mostrarError(input, "Se tiene que completar este campo");
+            valido = false;
+          } else {
+            limpiarError(input);
+          }
+        });
+
+        if (!valido) e.preventDefault(); // Evita enviar si hay errores
+      });
+    });
+  });
+</script>
 
 </body>
 </html>

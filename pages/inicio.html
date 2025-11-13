@@ -8,11 +8,46 @@
   <link rel="stylesheet" href="/styles/style.css">
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <style>
+    /* ✨ Animaciones suaves con fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 💬 Mensaje de bienvenida */
+    .welcome-popup {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #2563eb;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      z-index: 9999;
+    }
+    .welcome-popup.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
+
 <body>
 
   <!-- Mobile Header -->
-  <header class="mobile-header">
+  <header class="mobile-header fade-in">
     <div class="mobile-header-content">
       <div class="logo-icon-small">V</div>
       <span class="logo-text-small">Vocatio</span>
@@ -20,7 +55,7 @@
   </header>
 
   <!-- Desktop Navbar -->
-  <nav class="navbar">
+  <nav class="navbar fade-in">
     <div class="navbar-container">
       <div class="logo">
         <div class="logo-icon">V</div>
@@ -42,7 +77,7 @@
         </a>
         <a href="./Herramientas/herramientas-seccion.html" class="nav-link">
           <i data-lucide="clipboard-list"></i>
-          <span>Herramientas de Planificación</span>
+          <span>Herramientas</span>
         </a>
         <a href="./Perfil/perfil-seccion.html" class="nav-link">
           <i data-lucide="user"></i>
@@ -52,55 +87,23 @@
 
       <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
     </div>
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-      <div class="breadcrumb-container">
-        <a href="#" class="breadcrumb-link">
-          <i data-lucide="home"></i>
-          <span>Inicio</span>
-        </a>
-        <span class="breadcrumb-separator"></span>
-        <span class="breadcrumb-current"></span>
-      </div>
-    </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero fade-in">
     <div class="hero-container">
       <div class="hero-content">
         <h1 class="hero-title">Te ayudamos a tomar la mejor decisión para tu futuro</h1>
         <p class="hero-text">Descubre tu vocación, explora carreras y planifica tu camino hacia el éxito profesional</p>
-        
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-number">50K+</div>
-            <div class="stat-label">Estudiantes registrados</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">100+</div>
-            <div class="stat-label">Carreras disponibles</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">95%</div>
-            <div class="stat-label">Satisfacción de usuarios</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">25+</div>
-            <div class="stat-label">Universidades aliadas</div>
-          </div>
-        </div>
       </div>
-
       <div class="hero-image">
         <img src="/assets/img/heroes/hero1.webp" alt="Hero Image"/>
       </div>
     </div>
-    <div class="hero-wave"></div>
   </section>
 
-  <!-- CTA Card -->
-  <section class="cta-section">
+  <!-- CTA Section -->
+  <section class="cta-section fade-in">
     <div class="container">
       <div class="cta-card">
         <h2 class="cta-title">¡Hola María! ¿Listo para descubrir tu vocación?</h2>
@@ -114,14 +117,15 @@
   </section>
 
   <!-- Tools Section -->
-  <section class="tools-section">
+  <section class="tools-section fade-in">
     <div class="container">
       <h2 class="section-title">Explora todas nuestras herramientas</h2>
       <p class="section-subtitle">Tenemos todo lo que necesitas para tomar la mejor decisión sobre tu futuro profesional</p>
       
       <div class="tools-grid">
+
         <!-- Test Vocacionales -->
-        <div class="tool-card">
+        <div class="tool-card fade-in">
           <div class="tool-header green"></div>
           <div class="tool-icon-circle green">
             <i data-lucide="clipboard-check"></i>
@@ -132,7 +136,7 @@
         </div>
 
         <!-- Explora Carreras -->
-        <div class="tool-card">
+        <div class="tool-card fade-in">
           <div class="tool-header orange"></div>
           <div class="tool-icon-circle orange">
             <i data-lucide="search"></i>
@@ -143,7 +147,7 @@
         </div>
 
         <!-- Herramientas de Planificación -->
-        <div class="tool-card">
+        <div class="tool-card fade-in">
           <div class="tool-header blue"></div>
           <div class="tool-icon-circle blue">
             <i data-lucide="clipboard-list"></i>
@@ -154,7 +158,7 @@
         </div>
 
         <!-- Recursos Educativos -->
-        <div class="tool-card">
+        <div class="tool-card fade-in">
           <div class="tool-header yellow"></div>
           <div class="tool-icon-circle yellow">
             <i data-lucide="book-open"></i>
@@ -165,7 +169,7 @@
         </div>
 
         <!-- Galería de Proyectos -->
-        <div class="tool-card">
+        <div class="tool-card fade-in">
           <div class="tool-header pink"></div>
           <div class="tool-icon-circle pink">
             <i data-lucide="folder"></i>
@@ -174,98 +178,42 @@
           <p class="tool-description">Conoce proyectos reales de estudiantes universitarios</p>
           <a href="#" class="tool-link">Explorar <i data-lucide="arrow-right"></i></a>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer fade-in">
     <div class="container">
-      <div class="footer-grid">
-        <!-- Company Info -->
-        <div class="footer-col">
-          <h4 class="footer-title">OrientaVocacional</h4>
-          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta. Descubre tus fortalezas y encuentra tu carrera ideal.</p>
-          <div class="footer-contact">
-            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
-            <p><i data-lucide="phone"></i> +1 234 567 890</p>
-            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
-          </div>
-        </div>
-
-        <!-- Acceso Rápido -->
-        <div class="footer-col">
-          <h4 class="footer-title">Acceso Rápido</h4>
-          <ul class="footer-links">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Test Vocacional</a></li>
-            <li><a href="#">Explorar Carreras</a></li>
-            <li><a href="#">Mis Favoritos</a></li>
-          </ul>
-        </div>
-
-        <!-- Recursos -->
-        <div class="footer-col">
-          <h4 class="footer-title">Recursos</h4>
-          <ul class="footer-links">
-            <li><a href="#">Materiales Educativos</a></li>
-            <li><a href="#">Chat con Estudiantes</a></li>
-            <li><a href="#">Calculadoras</a></li>
-            <li><a href="#">Universidades</a></li>
-          </ul>
-        </div>
-
-        <!-- Mi Cuenta -->
-        <div class="footer-col">
-          <h4 class="footer-title">Mi Cuenta</h4>
-          <ul class="footer-links">
-            <li><a href="#">Mi Perfil</a></li>
-            <li><a href="#">Configuración</a></li>
-            <li><a href="#">Notificaciones</a></li>
-            <li><a href="#">Reportes</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
-        <div class="footer-social">
-          <a href="#"><i data-lucide="facebook"></i></a>
-          <a href="#"><i data-lucide="twitter"></i></a>
-          <a href="#"><i data-lucide="instagram"></i></a>
-          <a href="#"><i data-lucide="linkedin"></i></a>
-        </div>
-        <div class="footer-legal">
-          <a href="#">Términos y Condiciones</a>
-          <a href="#">Política de Privacidad</a>
-          <a href="#">Ayuda</a>
-        </div>
-      </div>
+      <p>&copy; 2025 Vocatio. Todos los derechos reservados.</p>
     </div>
   </footer>
 
-  <!-- Mobile Bottom Navigation -->
-  <nav class="bottom-nav">
-    <a href="./inicio.html" class="bottom-nav-item active">
-      <i data-lucide="home"></i>
-    </a>
-    <a href="./TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
-      <i data-lucide="clipboard-check"></i>
-    </a>
-    <a href="./ExplorarCarreras/explorar-carreras-seccion.html" class="bottom-nav-item">
-      <i data-lucide="search"></i>
-    </a>
-    <a href="./Herramientas/herramientas-seccion.html" class="bottom-nav-item">
-      <i data-lucide="clipboard-list"></i>
-    </a>
-    <a href="./Perfil/perfil-seccion.html" class="bottom-nav-item">
-      <i data-lucide="user"></i>
-    </a>
-  </nav>
+  <!-- Popup Bienvenida -->
+  <div id="welcome" class="welcome-popup">👋 ¡Bienvenido a Vocatio!</div>
 
   <script>
+    // 🔹 Activa íconos Lucide
     lucide.createIcons();
-  </script>
 
+    // 🔹 Efecto Fade-In al hacer scroll
+    const elements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    elements.forEach(el => observer.observe(el));
+
+    // 🔹 Mensaje de bienvenida
+    window.addEventListener('load', () => {
+      const popup = document.getElementById('welcome');
+      popup.classList.add('show');
+      setTimeout(() => {
+        popup.classList.remove('show');
+      }, 3500);
+    });
+  </script>
 </body>
 </html>

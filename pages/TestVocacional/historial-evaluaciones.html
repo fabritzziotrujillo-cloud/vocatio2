@@ -40,7 +40,7 @@
           <i data-lucide="search"></i>
           <span>Explorar Carreras</span>
         </a>
-        <a href="../Herramientas/herramientas-seccion.html" class="nav-link ">
+        <a href="../Herramientas/herramientas-seccion.html" class="nav-link">
           <i data-lucide="clipboard-list"></i>
           <span>Herramientas</span>
         </a>
@@ -117,15 +117,9 @@
           </div>
           
           <div class="test-actions">
-            <button class="btn-see-results">
-              Ver Resultados
-            </button>
-            <button class="btn-compare">
-              Comparar
-            </button>
-            <button class="btn-download">
-              Descargar PDF
-            </button>
+            <button class="btn-see-results">Ver Resultados</button>
+            <button class="btn-compare">Comparar</button>
+            <button class="btn-download">Descargar PDF</button>
           </div>
         </div>
 
@@ -143,15 +137,9 @@
           </div>
           
           <div class="test-actions">
-            <button class="btn-see-results">
-              Ver Resultados
-            </button>
-            <button class="btn-compare">
-              Comparar
-            </button>
-            <button class="btn-download">
-              Descargar PDF
-            </button>
+            <button class="btn-see-results">Ver Resultados</button>
+            <button class="btn-compare">Comparar</button>
+            <button class="btn-download">Descargar PDF</button>
           </div>
         </div>
 
@@ -169,20 +157,13 @@
           </div>
           
           <div class="test-actions">
-            <button class="btn-see-results">
-              Ver Resultados
-            </button>
-            <button class="btn-compare">
-              Comparar
-            </button>
-            <button class="btn-download">
-              Descargar PDF
-            </button>
+            <button class="btn-see-results">Ver Resultados</button>
+            <button class="btn-compare">Comparar</button>
+            <button class="btn-download">Descargar PDF</button>
           </div>
         </div>
 
       </div>
-
     </div>
   </section>
 
@@ -252,10 +233,10 @@
     <a href="../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item active">
       <i data-lucide="clipboard-check"></i>
     </a>
-    <a href="../ExplorarCarreras/explorar-carreras.html" class="bottom-nav-item ">
+    <a href="../ExplorarCarreras/explorar-carreras.html" class="bottom-nav-item">
       <i data-lucide="search"></i>
     </a>
-    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item ">
+    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item">
       <i data-lucide="clipboard-list"></i>
     </a>
     <a href="../Perfil/perfil-seccion.html" class="bottom-nav-item">
@@ -263,8 +244,28 @@
     </a>
   </nav>
 
+  <!-- Scripts -->
   <script>
     lucide.createIcons();
+
+    // --- JavaScript para botones ---
+    document.querySelectorAll('.btn-see-results').forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert('Abriendo tus resultados...');
+      });
+    });
+
+    document.querySelectorAll('.btn-compare').forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert('Función de comparación próximamente disponible 😎');
+      });
+    });
+
+    document.querySelectorAll('.btn-download').forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert('Tu PDF se está generando...');
+      });
+    });
   </script>
 
 </body>

@@ -129,7 +129,7 @@
                 <span class="stat-value">12</span>
               </div>
             </div>
-            <button class="btn-analyze">Analizar cambio</button>
+             <a class="btn-analyze" href="analisis-convalidacion.html">Analizar cambio</a>
           </div>
         </div>
 
@@ -150,7 +150,7 @@
                 <span class="stat-value">15</span>
               </div>
             </div>
-            <button class="btn-analyze">Analizar cambio</button>
+             <a class="btn-analyze" href="analisis-convalidacion.html">Analizar cambio</a>
           </div>
         </div>
 
@@ -171,7 +171,7 @@
                 <span class="stat-value">6</span>
               </div>
             </div>
-            <button class="btn-analyze">Analizar cambio</button>
+             <a class="btn-analyze" href="analisis-convalidacion.html">Analizar cambio</a>
           </div>
         </div>
 
@@ -192,7 +192,7 @@
                 <span class="stat-value">18</span>
               </div>
             </div>
-            <button class="btn-analyze">Analizar cambio</button>
+             <a class="btn-analyze" href="analisis-convalidacion.html">Analizar cambio</a>
           </div>
         </div>
 
@@ -213,7 +213,7 @@
                 <span class="stat-value">10</span>
               </div>
             </div>
-            <button class="btn-analyze">Analizar cambio</button>
+             <a class="btn-analyze" href="analisis-convalidacion.html">Analizar cambio</a>
           </div>
         </div>
       </div>
@@ -300,6 +300,67 @@
   <script>
     lucide.createIcons();
   </script>
+<script>
+lucide.createIcons();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const analyzeButtons = document.querySelectorAll(".btn-analyze");
+  const cards = document.querySelectorAll(".career-card");
+
+  analyzeButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // Quitar errores previos
+      document.querySelectorAll(".error-msg").forEach((m) => m.remove());
+      cards.forEach((c) => c.classList.remove("selected", "error"));
+
+      // Marcar la tarjeta seleccionada
+      const card = btn.closest(".career-card");
+      card.classList.add("selected");
+
+      // Si el botón tiene un enlace dentro (como el primero), redirige
+      const link = card.querySelector("a.btn-analyze");
+      if (link && link.getAttribute("href")) {
+        window.location.href = link.getAttribute("href");
+        return;
+      }
+
+      // Para los botones normales, verificamos si es válido
+      const validCareer = card.querySelector(".career-name").textContent.trim();
+      if (validCareer) {
+        // Simular redirección si todo está correcto
+        window.location.href = "analisis-convalidacion.html";
+      } else {
+        card.classList.add("error");
+        const msg = document.createElement("p");
+        msg.classList.add("error-msg");
+        msg.textContent = "Debes seleccionar una carrera antes de continuar.";
+        card.appendChild(msg);
+      }
+    });
+  });
+});
+</script>
+
+<style>
+.career-card.selected {
+  border: 3px solid #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+.career-card.error {
+  border: 3px solid #e63946;
+  background-color: #ffe5e5;
+}
+
+.error-msg {
+  color: #e63946;
+  font-size: 0.85rem;
+  margin-top: 6px;
+  text-align: center;
+}
+</style>
 
 </body>
 </html>

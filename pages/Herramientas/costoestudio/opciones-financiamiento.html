@@ -336,6 +336,133 @@
   <script>
     lucide.createIcons();
   </script>
+<!-- Modal Asesoría Financiera -->
+<div id="asesoria-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h2>Solicitar Asesoría Financiera</h2>
+    <form id="asesoria-form">
+      <div class="form-group">
+        <label>Nombre completo</label>
+        <input type="text" id="nombre" placeholder="Ingresa tu nombre completo">
+      </div>
+
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <input type="email" id="correo" placeholder="Ingresa tu correo">
+      </div>
+
+      <div class="form-group">
+        <label>Teléfono</label>
+        <input type="tel" id="telefono" placeholder="Ej. 987654321">
+      </div>
+
+      <div class="form-group">
+        <label>Comentario o consulta</label>
+        <textarea id="comentario" placeholder="Escribe tu mensaje"></textarea>
+      </div>
+
+      <button type="button" id="enviar-btn" class="btn-primary">Enviar Solicitud</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  lucide.createIcons();
+
+  const modal = document.getElementById("asesoria-modal");
+  const openBtn = document.querySelector(".btn-primary");
+  const closeBtn = document.querySelector(".close-modal");
+  const enviarBtn = document.getElementById("enviar-btn");
+
+  openBtn.addEventListener("click", () => modal.style.display = "flex");
+  closeBtn.addEventListener("click", () => modal.style.display = "none");
+  window.addEventListener("click", e => { if (e.target === modal) modal.style.display = "none"; });
+
+  enviarBtn.addEventListener("click", () => {
+    clearErrors();
+    const nombre = document.getElementById("nombre");
+    const correo = document.getElementById("correo");
+    const telefono = document.getElementById("telefono");
+    const comentario = document.getElementById("comentario");
+    let valid = true;
+
+    if (nombre.value.trim() === "") { showError(nombre, "⚠️ Este campo es obligatorio"); valid = false; }
+    if (correo.value.trim() === "") { showError(correo, "⚠️ Este campo es obligatorio"); valid = false; }
+    if (telefono.value.trim() === "") { showError(telefono, "⚠️ Este campo es obligatorio"); valid = false; }
+    if (comentario.value.trim() === "") { showError(comentario, "⚠️ Este campo es obligatorio"); valid = false; }
+
+    if (valid) {
+      alert("✅ Tu solicitud ha sido enviada con éxito.");
+      modal.style.display = "none";
+      document.getElementById("asesoria-form").reset();
+    }
+  });
+
+  function showError(element, message) {
+    const errorMsg = document.createElement("span");
+    errorMsg.classList.add("error-message");
+    errorMsg.textContent = message;
+    element.insertAdjacentElement("afterend", errorMsg);
+    element.style.border = "2px solid #e63946";
+  }
+
+  function clearErrors() {
+    document.querySelectorAll(".error-message").forEach(e => e.remove());
+    document.querySelectorAll("#asesoria-form input, #asesoria-form textarea")
+      .forEach(el => el.style.border = "");
+  }
+</script>
+
+<style>
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center; align-items: center;
+  }
+  .modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%; max-width: 500px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  .close-modal {
+    position: absolute;
+    top: 12px; right: 16px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .form-group input, .form-group textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  .form-group textarea {
+    resize: vertical;
+    height: 70px;
+  }
+  .error-message {
+    color: #e63946;
+    font-size: 0.9rem;
+    margin-left: 5px;
+  }
+</style>
 
 </body>
 </html>

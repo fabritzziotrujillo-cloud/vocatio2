@@ -1,0 +1,113 @@
+/* Fuente general y reset */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f9fbfd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Contenedor principal */
+.container {
+  width: 90%;
+  max-width: 800px;
+  background: #fff;
+  border: 2px solid #8fd6ff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem 3rem;
+  text-align: center;
+}
+
+/* Encabezado */
+header h1 {
+  color: #004b70;
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+header p {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Opciones */
+.opciones-edad {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.opcion {
+  border: 1px dashed #8fd6ff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.opcion:hover {
+  background-color: #e8f7ff;
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 145, 255, 0.1);
+}
+
+.opcion h2 {
+  color: #004b70;
+  margin-bottom: 0.5rem;
+}
+
+.opcion p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+/* Botón */
+.btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #4db8ff, #007acc);
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #5cc0ff, #0080d6);
+  transform: translateY(-2px);
+}
+
+/* Adaptación a móviles */
+@media (max-width: 600px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  .opcion {
+    padding: 1rem;
+  }
+  
+}
+.mensaje-info {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #007acc;
+  font-weight: 500;
+  display: none;
+  transition: all 0.3s ease;
+}

@@ -174,10 +174,12 @@
           <i data-lucide="download"></i>
           Descargar Plan PDF
         </button>
-        <button class="btn-primary">
-          <i data-lucide="phone"></i>
-          Contactar Asesor
-        </button>
+           <a href="../../inicio.html" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+            <i data-lucide="phone"></i>
+             Contactar Asesor
+              </a>
+
+        
       </div>
     </div>
   </section>
@@ -262,6 +264,83 @@
   <script>
     lucide.createIcons();
   </script>
+<script>
+lucide.createIcons();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const contactButton = document.querySelector(".btn-primary");
+  const downloadButton = document.querySelector(".btn-secondary");
+
+  // Creamos un checkbox de confirmación
+  const confirmBox = document.createElement("div");
+  confirmBox.classList.add("confirm-box");
+  confirmBox.innerHTML = `
+    <label class="confirm-label">
+      <input type="checkbox" id="confirmPlan">
+      Confirmo que he revisado mi plan de transición
+    </label>
+    <p id="errorMsg" class="error-msg" style="display:none;">Debes confirmar antes de continuar.</p>
+  `;
+
+  // Insertar justo antes de los botones
+  const actionsContainer = document.querySelector(".plan-actions");
+  actionsContainer.parentNode.insertBefore(confirmBox, actionsContainer);
+
+  // Validación al hacer clic en Contactar o Descargar
+  function validateAction(event) {
+    const checkbox = document.getElementById("confirmPlan");
+    const errorMsg = document.getElementById("errorMsg");
+
+    if (!checkbox.checked) {
+      event.preventDefault();
+      errorMsg.style.display = "block";
+      confirmBox.classList.add("error");
+    } else {
+      errorMsg.style.display = "none";
+      confirmBox.classList.remove("error");
+      if (event.target === contactButton) {
+        alert("Un asesor se pondrá en contacto contigo pronto.");
+      } else if (event.target === downloadButton) {
+        window.print();
+      }
+    }
+  }
+
+  contactButton.addEventListener("click", validateAction);
+  downloadButton.addEventListener("click", validateAction);
+});
+</script>
+
+<style>
+.confirm-box {
+  margin: 20px 0;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.confirm-label {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.confirm-box.error {
+  border-color: #e63946;
+  background: #ffe5e5;
+}
+
+.error-msg {
+  color: #e63946;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+</style>
 
 </body>
 </html>

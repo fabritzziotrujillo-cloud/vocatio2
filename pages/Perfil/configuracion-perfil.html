@@ -681,6 +681,180 @@
   <script>
     lucide.createIcons();
   </script>
+  <!-- Script de Confirmación Bonita -->
+  <style>
+    /* Estilo del fondo difuminado del modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+    }
 
+    /* Cuadro del modal */
+    .modal-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      animation: popIn 0.25s ease;
+    }
+
+    .modal-box h2 {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .modal-box p {
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .modal-btn {
+      padding: 0.6rem 1.4rem;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .modal-btn-confirm {
+      background: #007bff;
+      color: white;
+    }
+
+    .modal-btn-cancel {
+      background: #eee;
+      color: #333;
+    }
+
+    .modal-btn-confirm:hover {
+      background: #0056b3;
+    }
+
+    .modal-btn-cancel:hover {
+      background: #ddd;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    lucide.createIcons();
+
+    const forms = document.querySelectorAll(".config-form");
+
+    forms.forEach(form => {
+      const saveBtn = form.querySelector(".btn-primary");
+      const cancelBtn = form.querySelector(".btn-secondary");
+      const inputs = form.querySelectorAll("input, textarea, select");
+
+      // 🔸 Crear o mostrar mensaje de error al lado del campo
+      const mostrarError = (input, mensaje) => {
+        let error = input.parentNode.querySelector(".error-msg");
+        if (!error) {
+          error = document.createElement("span");
+          error.classList.add("error-msg");
+          input.parentNode.appendChild(error);
+        }
+        error.textContent = mensaje;
+        input.classList.add("input-error");
+      };
+
+      const limpiarError = (input) => {
+        let error = input.parentNode.querySelector(".error-msg");
+        if (error) error.textContent = "";
+        input.classList.remove("input-error");
+      };
+
+      // 🔹 Validar todos los campos antes de guardar
+      const validarFormulario = () => {
+        let valido = true;
+        inputs.forEach(input => {
+          if (input.hasAttribute("required") && input.value.trim() === "") {
+            mostrarError(input, "Se tiene que completar este campo");
+            valido = false;
+          } else {
+            limpiarError(input);
+          }
+        });
+        return valido;
+      };
+
+      // 🔸 Modal de confirmación
+      const mostrarModal = (mensaje, callbackConfirmar) => {
+        const overlay = document.createElement("div");
+        overlay.classList.add("modal-overlay");
+
+        const box = document.createElement("div");
+        box.classList.add("modal-box");
+        box.innerHTML = `
+          <h2>¿Estás seguro?</h2>
+          <p>${mensaje}</p>
+          <div class="modal-buttons">
+            <button class="modal-btn modal-btn-confirm">Sí</button>
+            <button class="modal-btn modal-btn-cancel">No</button>
+          </div>
+        `;
+
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+
+        box.querySelector(".modal-btn-confirm").addEventListener("click", () => {
+          document.body.removeChild(overlay);
+          callbackConfirmar();
+        });
+
+        box.querySelector(".modal-btn-cancel").addEventListener("click", () => {
+          document.body.removeChild(overlay);
+        });
+      };
+
+      // 🔹 Guardar cambios
+      if (saveBtn) {
+        saveBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (validarFormulario()) {
+            mostrarModal("¿Deseas guardar los cambios y volver al inicio?", () => {
+              window.location.href = "../inicio.html";
+            });
+          }
+        });
+      }
+
+      // 🔹 Cancelar cambios
+      if (cancelBtn) {
+        cancelBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          mostrarModal("¿Deseas cancelar los cambios y volver al inicio?", () => {
+            window.location.href = "../inicio.html";
+          });
+        });
+      }
+    });
+  });
+</script>
+
+
+
+ 
 </body>
 </html>

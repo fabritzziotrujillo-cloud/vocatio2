@@ -270,6 +270,72 @@
     lucide.createIcons();
 
   </script>
+<script>
+  lucide.createIcons();
+
+  function generateReport() {
+    const carrera = document.getElementById("carrera");
+    const modalidad = document.getElementById("modalidad");
+    const radios = document.getElementsByName("especializacion");
+
+    let valid = true;
+    clearErrors();
+
+    if (carrera.value === "") {
+      showError(carrera, "⚠️ Este campo es obligatorio");
+      valid = false;
+    }
+
+    if (modalidad.value === "") {
+      showError(modalidad, "⚠️ Este campo es obligatorio");
+      valid = false;
+    }
+
+    let especializacionSeleccionada = false;
+    radios.forEach(radio => {
+      if (radio.checked) especializacionSeleccionada = true;
+    });
+    if (!especializacionSeleccionada) {
+      showError(radios[0].closest(".form-group"), "⚠️ Selecciona una opción");
+      valid = false;
+    }
+
+    if (valid) {
+      alert("✅ Reporte generado correctamente.");
+    }
+  }
+
+  function showError(element, message) {
+    const errorMsg = document.createElement("span");
+    errorMsg.classList.add("error-message");
+    errorMsg.textContent = message;
+
+    // Posicionar el error justo al lado
+    if (element.parentElement.classList.contains("form-group")) {
+      element.parentElement.appendChild(errorMsg);
+    } else {
+      element.insertAdjacentElement("afterend", errorMsg);
+    }
+
+    // Borde rojo en el input
+    if (element.tagName === "SELECT" || element.tagName === "INPUT") {
+      element.style.border = "2px solid #e63946";
+    }
+  }
+
+  function clearErrors() {
+    document.querySelectorAll(".error-message").forEach(e => e.remove());
+    document.querySelectorAll("select, input").forEach(el => el.style.border = "");
+  }
+</script>
+
+<style>
+  .error-message {
+    color: #e63946;
+    font-size: 0.9rem;
+    margin-left: 8px;
+  }
+</style>
 
 </body>
 </html>

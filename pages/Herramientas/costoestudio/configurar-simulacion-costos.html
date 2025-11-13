@@ -194,10 +194,11 @@
 
         <!-- Action Button -->
         <div class="form-actions">
-          <button type="button" class="btn-primary" onclick="window.location.href='costos-educativos-resultado.html'">
-            <i data-lucide="calculator"></i>
-            Calcular Costos Totales
+          <button type="button" class="btn-primary" onclick="validarFormulario()">
+           <i data-lucide="calculator"></i>
+           Calcular Costos Totales
           </button>
+
         </div>
       </div>
     </div>
@@ -283,6 +284,62 @@
   <script>
     lucide.createIcons();
   </script>
+<script>
+lucide.createIcons();
+
+function validarFormulario() {
+  const campos = document.querySelectorAll(".form-select, .form-input");
+  let valido = true;
+
+  // Quitar errores anteriores
+  document.querySelectorAll(".error-msg").forEach(el => el.remove());
+  campos.forEach(c => c.classList.remove("error"));
+
+  campos.forEach(campo => {
+    if (campo.value.trim() === "") {
+      valido = false;
+      campo.classList.add("error");
+
+      const msg = document.createElement("span");
+      msg.classList.add("error-msg");
+      msg.textContent = "Completa este campo obligatoriamente";
+      campo.insertAdjacentElement("afterend", msg);
+    }
+  });
+
+  // Solo si todos los campos están completos, avanza
+  if (valido) {
+    window.location.href = "costos-educativos-resultado.html";
+  }
+}
+
+// Quita el mensaje al corregir el campo
+document.addEventListener("input", (e) => {
+  const campo = e.target;
+  if (campo.classList.contains("form-select") || campo.classList.contains("form-input")) {
+    campo.classList.remove("error");
+    if (campo.nextElementSibling && campo.nextElementSibling.classList.contains("error-msg")) {
+      campo.nextElementSibling.remove();
+    }
+  }
+});
+</script>
+
+<style>
+.error {
+  border: 2px solid #e63946 !important;
+  background-color: #ffe5e5 !important;
+}
+
+.error-msg {
+  color: #e63946;
+  font-size: 0.85rem;
+  margin-left: 8px;
+  display: inline-block;
+  position: relative;
+  top: 1px;
+}
+</style>
 
 </body>
 </html>

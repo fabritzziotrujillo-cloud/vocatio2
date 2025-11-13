@@ -133,10 +133,11 @@
 
           <div class="form-actions">
             <button type="button" class="btn-secondary">Cancelar</button>
-            <a type="submit" class="btn-primary" href="seleccionar-carrera-destino.html">
-              <span>Continuar al siguiente paso</span>
-              <i data-lucide="arrow-right"></i>
-            </a>
+           <button type="button" class="btn-primary" id="btnContinuar">
+           <span>Continuar al siguiente paso</span>
+           <i data-lucide="arrow-right"></i>
+          </button>
+
           </div>
         </form>
       </div>
@@ -223,6 +224,51 @@
   <script>
     lucide.createIcons();
   </script>
+<script>
+  lucide.createIcons();
+
+  document.getElementById('btnContinuar').addEventListener('click', function () {
+    const campos = [
+      { id: 'carrera-actual', label: 'Carrera actual' },
+      { id: 'universidad-actual', label: 'Universidad actual' },
+      { id: 'ciclo-actual', label: 'Ciclo/Semestre actual' },
+      { id: 'promedio-actual', label: 'Promedio actual' },
+      { id: 'motivo-cambio', label: 'Motivo del cambio' }
+    ];
+
+    let valido = true;
+
+    campos.forEach(campo => {
+      const input = document.getElementById(campo.id);
+      let mensaje = input.parentElement.querySelector('.error-msg');
+
+      // Crear mensaje si no existe
+      if (!mensaje) {
+        mensaje = document.createElement('span');
+        mensaje.classList.add('error-msg');
+        input.parentElement.appendChild(mensaje);
+      }
+
+      // Validar campo
+      if (input.value.trim() === '') {
+        input.style.border = '2px solid red';
+        mensaje.textContent = 'Este campo es obligatorio';
+        mensaje.style.color = 'red';
+        mensaje.style.fontSize = '0.85rem';
+        mensaje.style.marginLeft = '8px';
+        valido = false;
+      } else {
+        input.style.border = '';
+        mensaje.textContent = '';
+      }
+    });
+
+    // Si todo está correcto, redirigir
+    if (valido) {
+      window.location.href = 'seleccionar-carrera-destino.html';
+    }
+  });
+</script>
 
 </body>
 </html>

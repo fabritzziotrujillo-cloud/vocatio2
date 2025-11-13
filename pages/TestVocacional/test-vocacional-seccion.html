@@ -364,6 +364,53 @@
   <script>
     lucide.createIcons();
   </script>
+  <script>
+    lucide.createIcons();
+
+    // --- Interactividad para botones de test ---
+    document.addEventListener("DOMContentLoaded", () => {
+      // Seleccionamos los botones principales
+      const botones = document.querySelectorAll(".btn-start-adventure, .action-link");
+
+      botones.forEach(boton => {
+        boton.addEventListener("mouseenter", () => {
+          // Crear mensaje flotante
+          const mensaje = document.createElement("div");
+          mensaje.classList.add("mensaje-flotante");
+          mensaje.textContent = "¡Prepárate para descubrir tu vocación!";
+          boton.appendChild(mensaje);
+
+          // Quitar después de 2 segundos
+          setTimeout(() => mensaje.remove(), 2000);
+        });
+      });
+    });
+  </script>
+
+  <style>
+    /* Estilo del mensaje flotante */
+    .mensaje-flotante {
+      position: absolute;
+      bottom: -35px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #2b6cb0;
+      color: white;
+      font-size: 0.9rem;
+      padding: 6px 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      opacity: 0;
+      animation: aparecer 0.3s forwards;
+      z-index: 10;
+      white-space: nowrap;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateX(-50%) translateY(5px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+  </style>
 
 </body>
 </html>

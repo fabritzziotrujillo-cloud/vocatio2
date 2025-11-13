@@ -235,7 +235,7 @@
           </div>
           <h4 class="step-title">Completa tu perfil</h4>
           <p class="step-desc">Aún te falta un 15% para completar tu perfil al 100%</p>
-          <a href="#" class="step-link">Completar ahora <i data-lucide="arrow-right"></i></a>
+          <a href="/pages/Perfil/configuracion-perfil.html" class="step-link">Completar ahora <i data-lucide="arrow-right"></i></a>
         </div>
 
         <div class="step-card">
@@ -244,7 +244,7 @@
           </div>
           <h4 class="step-title">Explora más carreras</h4>
           <p class="step-desc">Descubre 15+ carreras que coinciden con tu perfil</p>
-          <a href="#" class="step-link">Explorar <i data-lucide="arrow-right"></i></a>
+          <a href="/pages/ExplorarCarreras/explorar-carreras-seccion.html" class="step-link">Explorar <i data-lucide="arrow-right"></i></a>
         </div>
 
         <div class="step-card">
@@ -253,7 +253,7 @@
           </div>
           <h4 class="step-title">Genera tu reporte</h4>
           <p class="step-desc">Descarga un análisis completo de tus resultados</p>
-          <a href="#" class="step-link">Generar reporte <i data-lucide="arrow-right"></i></a>
+          <a href="/pages/Perfil/generar-reporte.html " class="step-link">Generar reporte <i data-lucide="arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -339,6 +339,136 @@
   <script>
     lucide.createIcons();
   </script>
+<style>
+  /* --- Estilos del modal --- */
+  .custom-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+
+  .custom-modal {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.3s ease;
+  }
+
+  .custom-modal h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #1e293b;
+  }
+
+  .custom-modal p {
+    font-size: 15px;
+    color: #475569;
+    margin-bottom: 25px;
+  }
+
+  .custom-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .custom-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .btn-confirm {
+    background: #2563eb;
+    color: white;
+  }
+
+  .btn-confirm:hover {
+    background: #1d4ed8;
+  }
+
+  .btn-cancel {
+    background: #f1f5f9;
+    color: #334155;
+  }
+
+  .btn-cancel:hover {
+    background: #e2e8f0;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  lucide.createIcons();
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const enlaces = [
+      { selector: 'a[href="/pages/Perfil/generar-reporte.html"]', mensaje: "¿Deseas generar tu reporte ahora?" },
+      { selector: 'a[href="/pages/ExplorarCarreras/explorar-carreras-seccion.html"]', mensaje: "¿Deseas explorar más carreras ahora?" },
+      { selector: 'a[href="/pages/Perfil/configuracion-perfil.html"]', mensaje: "¿Deseas completar tu perfil antes de continuar?" }
+    ];
+
+    // Crear modal dinámico
+    function mostrarModal(mensaje, callback) {
+      const overlay = document.createElement("div");
+      overlay.className = "custom-modal-overlay";
+      overlay.innerHTML = `
+        <div class="custom-modal">
+          <h3>Confirmar acción</h3>
+          <p>${mensaje}</p>
+          <div class="custom-modal-buttons">
+            <button class="custom-btn btn-confirm">Sí</button>
+            <button class="custom-btn btn-cancel">No</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+
+      const btnConfirm = overlay.querySelector(".btn-confirm");
+      const btnCancel = overlay.querySelector(".btn-cancel");
+
+      btnConfirm.addEventListener("click", () => {
+        document.body.removeChild(overlay);
+        callback(true);
+      });
+
+      btnCancel.addEventListener("click", () => {
+        document.body.removeChild(overlay);
+        callback(false);
+      });
+    }
+
+    // Asignar a cada enlace
+    enlaces.forEach(({ selector, mensaje }) => {
+      const link = document.querySelector(selector);
+      if (link) {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          mostrarModal(mensaje, (confirmado) => {
+            if (confirmado) {
+              window.location.href = link.getAttribute("href");
+            }
+          });
+        });
+      }
+    });
+  });
+</script>
 
 </body>
 </html>

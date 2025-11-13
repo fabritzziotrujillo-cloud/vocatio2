@@ -236,6 +236,34 @@
   <script>
     lucide.createIcons();
   </script>
+<script>
+  lucide.createIcons();
+
+  const boton = document.getElementById("contactar-asesor");
+
+  // Estilo con JavaScript
+  boton.style.backgroundColor = "#007bff";
+  boton.style.color = "white";
+  boton.style.border = "none";
+  boton.style.padding = "12px 24px";
+  boton.style.borderRadius = "8px";
+  boton.style.cursor = "pointer";
+  boton.style.display = "flex";
+  boton.style.alignItems = "center";
+  boton.style.gap = "8px";
+  boton.style.fontWeight = "600";
+  boton.style.fontSize = "16px";
+  boton.style.transition = "all 0.3s ease";
+
+  // Efecto hover
+  boton.addEventListener("mouseover", () => {
+    boton.style.backgroundColor = "#0056b3";
+  });
+
+  boton.addEventListener("mouseout", () => {
+    boton.style.backgroundColor = "#007bff";
+  });
+</script>
 
 </body>
 </html>

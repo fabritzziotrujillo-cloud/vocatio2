@@ -14,18 +14,58 @@
         </header>
         
         <main class="opciones-edad">
-            <div class="opcion opcion-mayor">
+            <div class="opcion opcion-mayor" data-tipo="mayor">
                 <h2>Eres mayor de 18 años</h2>
                 <p>Haz click en esta casilla para iniciar sesión</p>
                 <a href="Crear cuentas/crearcuenta1.html" class="btn">Mayor de 18 años</a>
             </div>
             
-            <div class="opcion opcion-menor">
+            <div class="opcion opcion-menor" data-tipo="menor">
                 <h2>Todavía no cumples los 18?</h2>
                 <p>Haz click en esta casilla para iniciar sesión con una experiencia acuerdo a tu edad</p>
                 <a href="Crear cuentas/crearcuenta2.html" class="btn">Menor de 18 años</a>
             </div>
         </main>
+
+        <div id="mensaje" class="mensaje-info"></div>
     </div>
+
+    <script>
+        // Referencias
+        const opciones = document.querySelectorAll('.opcion');
+        const mensaje = document.getElementById('mensaje');
+        let seleccion = null;
+
+        // Evento cuando el usuario pasa el mouse
+        opciones.forEach(opcion => {
+            opcion.addEventListener('mouseenter', () => {
+                const tipo = opcion.dataset.tipo;
+                mensaje.textContent = tipo === 'mayor'
+                    ? "Podrás crear tu cuenta con acceso completo a las funciones de orientación."
+                    : "Te guiaremos con herramientas adaptadas a tu edad.";
+                mensaje.style.display = "block";
+            });
+
+            // Limpiar mensaje al salir
+            opcion.addEventListener('mouseleave', () => {
+                mensaje.textContent = "";
+                mensaje.style.display = "none";
+            });
+
+            // Guardar selección
+            opcion.addEventListener('click', () => {
+                seleccion = opcion.dataset.tipo;
+            });
+        });
+
+        // Validación al intentar salir sin elegir (por si hay otros botones en el futuro)
+        window.addEventListener('beforeunload', (e) => {
+            if (!seleccion) {
+                e.preventDefault();
+                e.returnValue = '';
+                alert("Por favor selecciona una opción antes de continuar.");
+            }
+        });
+    </script>
 </body>
 </html>

@@ -111,16 +111,19 @@
         <div class="form-row">
           <div class="form-column">
             <label class="form-label">Título del reporte</label>
-            <input type="text" class="form-input" value="Mi Reporte Vocacional Personal">
+            <input type="text" id="titulo-reporte" class="form-input" value="Mi Reporte Vocacional Personal">
+            <small class="error-message" style="color:red;display:none;"></small>
           </div>
           
           <div class="form-column">
             <label class="form-label">Incluir logo/marca personal</label>
-            <select class="form-select">
-              <option selected>Sin logo</option>
+            <select id="logo-opcion" class="form-select">
+              <option value="">Selecciona una opción</option>
+              <option>Sin logo</option>
               <option>Logo personal</option>
               <option>Logo institucional</option>
             </select>
+            <small class="error-message" style="color:red;display:none;"></small>
           </div>
         </div>
 
@@ -185,7 +188,7 @@
 
         <!-- Submit Button -->
         <div class="form-actions">
-          <a href="vista-previa-reporte.html" class="btn-generate">Generar Vista Previa</a>
+          <a href="vista-previa-reporte.html" id="btn-generar" class="btn-generate">Generar Vista Previa</a>
         </div>
 
       </form>
@@ -272,6 +275,34 @@
 
   <script>
     lucide.createIcons();
+
+    // --- Validación del formulario ---
+    document.getElementById('btn-generar').addEventListener('click', function(e) {
+      e.preventDefault();
+
+      const titulo = document.getElementById('titulo-reporte');
+      const logo = document.getElementById('logo-opcion');
+      const errores = document.querySelectorAll('.error-message');
+      errores.forEach(err => err.style.display = 'none');
+
+      let valido = true;
+
+      if (titulo.value.trim() === '') {
+        titulo.nextElementSibling.textContent = 'Por favor completa este campo antes de continuar.';
+        titulo.nextElementSibling.style.display = 'block';
+        valido = false;
+      }
+
+      if (logo.value.trim() === '') {
+        logo.nextElementSibling.textContent = 'Selecciona una opción antes de continuar.';
+        logo.nextElementSibling.style.display = 'block';
+        valido = false;
+      }
+
+      if (valido) {
+        window.location.href = 'vista-previa-reporte.html';
+      }
+    });
   </script>
 
 </body>
