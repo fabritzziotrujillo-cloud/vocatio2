@@ -290,3 +290,123 @@
     width: 100%;
   }
 }
+#career-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.career-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  background: #fff;
+}
+
+.career-option:hover {
+  background: #f3f3f3;
+}
+
+.career-option img {
+  width: 55px;
+  height: 55px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.career-option input {
+  width: 20px;
+  height: 20px;
+}
+
+.career-option h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.career-option span {
+  font-size: 13px;
+  color: gray;
+}
+/* Contenedor general */
+.careers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+/* Cada item */
+.career-item {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 12px;
+  gap: 14px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* Hover */
+.career-item:hover {
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+/* Checkbox */
+.career-checkbox {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: #2563eb;
+}
+
+/* Imagen */
+.career-item-image {
+  width: 58px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Info de la carrera */
+.career-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.career-item-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.career-item-meta {
+  font-size: 13px;
+  color: #64748b;
+}
+
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 768px) {
+  .career-item {
+    padding: 10px;
+  }
+
+  .career-item-image {
+    width: 50px;
+    height: 50px;
+  }
+}
+

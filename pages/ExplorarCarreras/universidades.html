@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="../../styles/style.css">
   <link rel="stylesheet" href="components/universidades.css">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L4NYN4CHVR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L4NYN4CHVR');
+</script>
 </head>
 <body>
 
@@ -28,36 +37,51 @@
       </div>
 
       <div class="nav-items">
-        <a href="../inicio.html" class="nav-link">
-          <i data-lucide="home"></i>
-          <span>Inicio</span>
-        </a>
-        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
-          <i data-lucide="clipboard-check"></i>
-          <span>Test Vocacional</span>
-        </a>
-        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link active">
-          <i data-lucide="search"></i>
-          <span>Explorar Carreras</span>
-        </a>
-        <a href="../Herramientas/herramientas-seccion.html" class="nav-link ">
-          <i data-lucide="clipboard-list"></i>
-          <span>Herramientas</span>
-        </a>
-        <a href="../Perfil/perfil-seccion.html" class="nav-link">
-          <i data-lucide="user"></i>
-          <span>Mi Perfil</span>
-        </a>
-      </div>
+      <a href="../inicio.html" class="nav-link">
+        <i data-lucide="home"></i>
+        <span>Inicio</span>
+      </a>
+      <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+        <i data-lucide="clipboard-check"></i>
+        <span>Test Vocacional</span>
+      </a>
+      <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+        <i data-lucide="search"></i>
+        <span>Explorar Carreras</span>
+      </a>
+      <a href="../Perfil/perfil-seccion.html" class="nav-link active">
+        <i data-lucide="user"></i>
+        <span>Mi Perfil</span>
+      </a>
+    </div>
 
-      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+      <!-- Avatar + Nombre (reemplaza el botón de Iniciar Sesión) -->
+<div id="nav-user" class="nav-user" style="position: relative; display:flex; align-items:center; gap:8px; cursor:pointer;">
+  <div id="userAvatar" class="nav-user-circle" style="
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: #5dade2; /* color si no hay foto */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      color: white;
+      font-size: 16px;
+  ">U</div>
+
+  <span id="userName" class="nav-user-name" style="font-weight: 600; color:#333;">Usuario</span>
+</div>
+
     </div>
   </nav>
 
   <!-- Breadcrumb -->
   <div class="breadcrumb">
     <div class="breadcrumb-container">
-      <a href="../../index.html" class="breadcrumb-link">
+      <a href="/pages/inicio.html" class="breadcrumb-link">
         <i data-lucide="home"></i>
         <span>Inicio</span>
       </a>
@@ -173,305 +197,251 @@
         </div>
       </div>
 
-      <!-- Universities List -->
-      <div class="universities-list">
-        <!-- University Card 1 -->
-        <div class="university-card">
-          <div class="uni-card-image">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=250&fit=crop" alt="UPC">
-          </div>
-          <div class="uni-card-content">
-            <div class="uni-card-header">
-              <div>
-                <h3 class="uni-card-title">Universidad Peruana de Ciencias Aplicadas (UPC)</h3>
-                <div class="uni-accreditation">
-                  <span class="accredit-badge">
-                    <i data-lucide="check-circle"></i>
-                    Acreditada SUNEDU
-                  </span>
-                </div>
-              </div>
-            </div>
+ <!-- Universities List -->
+<div class="universities-list">
 
-            <div class="uni-details">
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="tag"></i>
-                  Tipo
-                </span>
-                <span class="detail-value">
-                  <span class="type-badge privada">Privada</span>
-                  <span class="location-badge">
-                    <i data-lucide="map-pin"></i>
-                    Villa / San Isidro
-                  </span>
-                </span>
-              </div>
+  <!-- ============================
+       UNIVERSIDAD 1 - UPC
+  ============================= -->
+  <div class="university-card"
+       data-region="lima"
+       data-tipo="privada"
+       data-presupuesto="alto">
 
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="dollar-sign"></i>
-                  Costo mensual
-                </span>
-                <span class="detail-value">$800/mes</span>
-              </div>
+    <div class="uni-card-image">
+      <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=250&fit=crop" alt="UPC">
+    </div>
 
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="clock"></i>
-                  Duración
-                </span>
-                <span class="detail-value">5 años</span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="star"></i>
-                  Rating
-                </span>
-                <span class="detail-value">4.7/5</span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="trending-up"></i>
-                  Empleabilidad
-                </span>
-                <span class="detail-value">92% empleabilidad</span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="laptop"></i>
-                  Modalidades
-                </span>
-                <span class="detail-value">Presencial, Semipresencial, Virtual</span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="calendar"></i>
-                  Próximo examen
-                </span>
-                <span class="detail-value">Nov 2024</span>
-              </div>
-            </div>
-
-            <div class="uni-actions">
-              <a href="detalle-universidad.html" class="btn-secondary">Ver Detalles</a>
-              <a href="#" class="btn-outline">Contactar</a>
-              <a href="#" class="btn-outline">
-                <i data-lucide="map-pin"></i>
-                Ubicación
-              </a>
-              <a href="#" class="btn-outline">
-                <i data-lucide="external-link"></i>
-                Web oficial
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- University Card 2 -->
-        <div class="university-card">
-          <div class="uni-card-image">
-            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=250&fit=crop" alt="UNMSM">
-          </div>
-          <div class="uni-card-content">
-            <div class="uni-card-header">
-              <div>
-                <h3 class="uni-card-title">Universidad Nacional Mayor de San Marcos (UNMSM)</h3>
-                <div class="uni-accreditation">
-                  <span class="accredit-badge">
-                    <i data-lucide="check-circle"></i>
-                    Acreditada SUNEDU
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="uni-details">
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="tag"></i>
-                  Tipo
-                </span>
-                <span class="detail-value">
-                  <span class="type-badge nacional">Nacional</span>
-                  <span class="location-badge">
-                    <i data-lucide="map-pin"></i>
-                    Ciudad Universitaria
-                  </span>
-                </span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="dollar-sign"></i>
-                  Costo mensual
-                </span>
-                <span class="detail-value">$50/mes</span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="clock"></i>
-                  Duración
-                </span>
-                <span class="detail-value">5 años</span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="star"></i>
-                  Rating
-                </span>
-                <span class="detail-value">4.5/5</span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="trending-up"></i>
-                  Empleabilidad
-                </span>
-                <span class="detail-value">88% empleabilidad</span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="laptop"></i>
-                  Modalidades
-                </span>
-                <span class="detail-value">Presencial</span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="calendar"></i>
-                  Próximo examen
-                </span>
-                <span class="detail-value">Nov 2024</span>
-              </div>
-            </div>
-
-            <div class="uni-actions">
-              <a href="detalle-universidad.html" class="btn-secondary">Ver Detalles</a>
-              <a href="#" class="btn-outline">Contactar</a>
-              <a href="#" class="btn-outline">
-                <i data-lucide="map-pin"></i>
-                Ubicación
-              </a>
-              <a href="#" class="btn-outline">
-                <i data-lucide="external-link"></i>
-                Web oficial
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- University Card 3 -->
-        <div class="university-card">
-          <div class="uni-card-image">
-            <img src="https://images.unsplash.com/photo-1541339907198-e06367411e42?w=400&h=250&fit=crop" alt="UTP">
-          </div>
-          <div class="uni-card-content">
-            <div class="uni-card-header">
-              <div>
-                <h3 class="uni-card-title">Universidad Tecnológica del Perú (UTP)</h3>
-                <div class="uni-accreditation">
-                  <span class="accredit-badge">
-                    <i data-lucide="check-circle"></i>
-                    Acreditada SUNEDU
-                  </span>
-                  <span class="accredit-badge warning">
-                    <i data-lucide="alert-circle"></i>
-                    Información parcial
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="uni-details">
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="tag"></i>
-                  Tipo
-                </span>
-                <span class="detail-value">
-                  <span class="type-badge privada">Privada</span>
-                  <span class="location-badge">
-                    <i data-lucide="map-pin"></i>
-                    Lima Centro
-                  </span>
-                </span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="dollar-sign"></i>
-                  Costo mensual
-                </span>
-                <span class="detail-value">$650/mes</span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="clock"></i>
-                  Duración
-                </span>
-                <span class="detail-value">5 años</span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="star"></i>
-                  Rating
-                </span>
-                <span class="detail-value">4.2/5</span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="trending-up"></i>
-                  Empleabilidad
-                </span>
-                <span class="detail-value">85% empleabilidad</span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="laptop"></i>
-                  Modalidades
-                </span>
-                <span class="detail-value">Presencial, Virtual</span>
-              </div>
-
-              <div class="detail-row">
-                <span class="detail-label">
-                  <i data-lucide="calendar"></i>
-                  Próximo examen
-                </span>
-                <span class="detail-value">Nov 2024</span>
-              </div>
-            </div>
-
-            <div class="uni-actions">
-              <a href="detalle-universidad.html" class="btn-secondary">Ver Detalles</a>
-              <a href="#" class="btn-outline">Contactar</a>
-              <a href="#" class="btn-outline">
-                <i data-lucide="map-pin"></i>
-                Ubicación
-              </a>
-              <a href="#" class="btn-outline">
-                <i data-lucide="external-link"></i>
-                Web oficial
-              </a>
-            </div>
-          </div>
+    <div class="uni-card-content">
+      <div class="uni-card-header">
+        <h3 class="uni-card-title">Universidad Peruana de Ciencias Aplicadas (UPC)</h3>
+        <div class="uni-accreditation">
+          <span class="accredit-badge"><i data-lucide="check-circle"></i> Acreditada SUNEDU</span>
         </div>
       </div>
+
+      <div class="uni-details">
+        <div class="detail-row">
+          <span class="detail-label"><i data-lucide="tag"></i> Tipo</span>
+          <span class="detail-value">
+            <span class="type-badge privada">Privada</span>
+            <span class="location-badge"><i data-lucide="map-pin"></i> Villa / San Isidro</span>
+          </span>
+        </div>
+
+        <div class="detail-row">
+          <span class="detail-label"><i data-lucide="dollar-sign"></i> Costo mensual</span>
+          <span class="detail-value">$800/mes</span>
+        </div>
+
+        <div class="detail-row"><span class="detail-label"><i data-lucide="clock"></i> Duración</span><span class="detail-value">5 años</span></div>
+        <div class="detail-row"><span class="detail-label"><i data-lucide="star"></i> Rating</span><span class="detail-value">4.7/5</span></div>
+        <div class="detail-row"><span class="detail-label"><i data-lucide="trending-up"></i> Empleabilidad</span><span class="detail-value">92% empleabilidad</span></div>
+        <div class="detail-row"><span class="detail-label"><i data-lucide="laptop"></i> Modalidades</span><span class="detail-value">Presencial, Semipresencial, Virtual</span></div>
+        <div class="detail-row"><span class="detail-label"><i data-lucide="calendar"></i> Próximo examen</span><span class="detail-value">Nov 2024</span></div>
+      </div>
+
+      <div class="uni-actions">
+        <a href="detalle-universidad.html?id=upc" class="btn-primary">Ver Detalles</a>
+      </div>
     </div>
-  </section>
+  </div>
+
+  <!-- ============================
+       UNIVERSIDAD 2 - UNMSM
+  ============================= -->
+  <div class="university-card"
+       data-region="lima"
+       data-tipo="publica"
+       data-presupuesto="bajo">
+
+    <div class="uni-card-image">
+      <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=250&fit=crop" alt="UNMSM">
+    </div>
+
+    <div class="uni-card-content">
+      <h3 class="uni-card-title">Universidad Nacional Mayor de San Marcos (UNMSM)</h3>
+      <div class="uni-accreditation">
+        <span class="accredit-badge"><i data-lucide="check-circle"></i> Acreditada SUNEDU</span>
+      </div>
+
+      <div class="uni-details">
+        <div class="detail-row">
+          <span class="detail-label">Tipo</span>
+          <span class="detail-value"><span class="type-badge nacional">Nacional</span></span>
+        </div>
+
+        <div class="detail-row"><span class="detail-label">Costo mensual</span><span class="detail-value">$50/mes</span></div>
+        <div class="detail-row"><span class="detail-label">Duración</span><span class="detail-value">5 años</span></div>
+        <div class="detail-row"><span class="detail-label">Rating</span><span class="detail-value">4.5/5</span></div>
+        <div class="detail-row"><span class="detail-label">Empleabilidad</span><span class="detail-value">88%</span></div>
+        <div class="detail-row"><span class="detail-label">Modalidades</span><span class="detail-value">Presencial</span></div>
+        <div class="detail-row"><span class="detail-label">Próximo examen</span><span class="detail-value">Nov 2024</span></div>
+      </div>
+
+      <div class="uni-actions">
+        <a href="detalle-universidad.html?id=unmsm" class="btn-primary">Ver Detalles</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       UNIVERSIDAD 3 - UTP
+  ============================= -->
+  <div class="university-card"
+       data-region="lima"
+       data-tipo="privada"
+       data-presupuesto="medio">
+
+    <div class="uni-card-image">
+      <img src="https://images.unsplash.com/photo-1541339907198-e06367411e42?w=400&h=250&fit=crop" alt="UTP">
+    </div>
+
+    <div class="uni-card-content">
+      <h3 class="uni-card-title">Universidad Tecnológica del Perú (UTP)</h3>
+
+      <div class="uni-details">
+        <div class="detail-row"><span class="detail-label">Tipo</span><span class="detail-value"><span class="type-badge privada">Privada</span></span></div>
+        <div class="detail-row"><span class="detail-label">Costo mensual</span><span class="detail-value">$650/mes</span></div>
+        <div class="detail-row"><span class="detail-label">Duración</span><span class="detail-value">5 años</span></div>
+        <div class="detail-row"><span class="detail-label">Rating</span><span class="detail-value">4.2/5</span></div>
+        <div class="detail-row"><span class="detail-label">Empleabilidad</span><span class="detail-value">85%</span></div>
+        <div class="detail-row"><span class="detail-label">Modalidades</span><span class="detail-value">Presencial, Virtual</span></div>
+        <div class="detail-row"><span class="detail-label">Próximo examen</span><span class="detail-value">Nov 2024</span></div>
+      </div>
+
+      <div class="uni-actions">
+        <a href="detalle-universidad.html?id=utp" class="btn-primary">Ver Detalles</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       UNIVERSIDAD 4 - PUCP
+  ============================= -->
+  <div class="university-card"
+       data-region="lima"
+       data-tipo="privada"
+       data-presupuesto="alto">
+
+    <div class="uni-card-image">
+      <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=250&fit=crop" alt="PUCP">
+    </div>
+
+    <div class="uni-card-content">
+      <h3 class="uni-card-title">Pontificia Universidad Católica del Perú (PUCP)</h3>
+
+      <div class="uni-details">
+        <div class="detail-row"><span class="detail-label">Tipo</span><span class="detail-value"><span class="type-badge privada">Privada</span></span></div>
+        <div class="detail-row"><span class="detail-label">Costo mensual</span><span class="detail-value">$900/mes</span></div>
+        <div class="detail-row"><span class="detail-label">Duración</span><span class="detail-value">5 años</span></div>
+        <div class="detail-row"><span class="detail-label">Rating</span><span class="detail-value">4.8/5</span></div>
+        <div class="detail-row"><span class="detail-label">Empleabilidad</span><span class="detail-value">93%</span></div>
+        <div class="detail-row"><span class="detail-label">Modalidades</span><span class="detail-value">Presencial</span></div>
+        <div class="detail-row"><span class="detail-label">Próximo examen</span><span class="detail-value">Dic 2024</span></div>
+      </div>
+
+      <div class="uni-actions">
+        <a href="detalle-universidad.html?id=pucp" class="btn-primary">Ver Detalles</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       UNIVERSIDAD 5 - USIL
+  ============================= -->
+  <div class="university-card"
+       data-region="lima"
+       data-tipo="privada"
+       data-presupuesto="medio">
+
+    <div class="uni-card-image">
+      <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=400&h=250&fit=crop" alt="USIL">
+    </div>
+
+    <div class="uni-card-content">
+      <h3 class="uni-card-title">Universidad San Ignacio de Loyola (USIL)</h3>
+
+      <div class="uni-details">
+        <div class="detail-row"><span class="detail-label">Tipo</span><span class="detail-value"><span class="type-badge privada">Privada</span></span></div>
+        <div class="detail-row"><span class="detail-label">Costo mensual</span><span class="detail-value">$700/mes</span></div>
+        <div class="detail-row"><span class="detail-label">Duración</span><span class="detail-value">5 años</span></div>
+        <div class="detail-row"><span class="detail-label">Rating</span><span class="detail-value">4.4/5</span></div>
+        <div class="detail-row"><span class="detail-label">Empleabilidad</span><span class="detail-value">80%</span></div>
+        <div class="detail-row"><span class="detail-label">Modalidades</span><span class="detail-value">Presencial, Virtual</span></div>
+        <div class="detail-row"><span class="detail-label">Próximo examen</span><span class="detail-value">Oct 2024</span></div>
+      </div>
+
+      <div class="uni-actions">
+        <a href="detalle-universidad.html?id=usil" class="btn-primary">Ver Detalles</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       UNIVERSIDAD 6 - UCV
+  ============================= -->
+  <div class="university-card"
+       data-region="norte"
+       data-tipo="privada"
+       data-presupuesto="bajo">
+
+    <div class="uni-card-image">
+      <img src="https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?w=400&h=250&fit=crop" alt="UCV">
+    </div>
+
+    <div class="uni-card-content">
+      <h3 class="uni-card-title">Universidad César Vallejo (UCV)</h3>
+
+      <div class="uni-details">
+        <div class="detail-row"><span class="detail-label">Tipo</span><span class="detail-value"><span class="type-badge privada">Privada</span></span></div>
+        <div class="detail-row"><span class="detail-label">Costo mensual</span><span class="detail-value">$600/mes</span></div>
+        <div class="detail-row"><span class="detail-label">Duración</span><span class="detail-value">5 años</span></div>
+        <div class="detail-row"><span class="detail-label">Rating</span><span class="detail-value">3.9/5</span></div>
+        <div class="detail-row"><span class="detail-label">Empleabilidad</span><span class="detail-value">75%</span></div>
+        <div class="detail-row"><span class="detail-label">Modalidades</span><span class="detail-value">Presencial</span></div>
+        <div class="detail-row"><span class="detail-label">Próximo examen</span><span class="detail-value">Nov 2024</span></div>
+      </div>
+
+      <div class="uni-actions">
+        <a href="detalle-universidad.html?id=ucv" class="btn-primary">Ver Detalles</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       UNIVERSIDAD 7 - UNFV
+  ============================= -->
+  <div class="university-card"
+       data-region="lima"
+       data-tipo="publica"
+       data-presupuesto="bajo">
+
+    <div class="uni-card-image">
+      <img src="https://images.unsplash.com/photo-1581090464777-7e0cdfbb6793?w=400&h=250&fit=crop" alt="UNFV">
+    </div>
+
+    <div class="uni-card-content">
+      <h3 class="uni-card-title">Universidad Nacional Federico Villarreal (UNFV)</h3>
+
+      <div class="uni-details">
+        <div class="detail-row"><span class="detail-label">Tipo</span><span class="detail-value"><span class="type-badge nacional">Nacional</span></span></div>
+        <div class="detail-row"><span class="detail-label">Costo mensual</span><span class="detail-value">$40/mes</span></div>
+        <div class="detail-row"><span class="detail-label">Duración</span><span class="detail-value">5 años</span></div>
+        <div class="detail-row"><span class="detail-label">Rating</span><span class="detail-value">4.1/5</span></div>
+        <div class="detail-row"><span class="detail-label">Empleabilidad</span><span class="detail-value">70%</span></div>
+        <div class="detail-row"><span class="detail-label">Modalidades</span><span class="detail-value">Presencial</span></div>
+        <div class="detail-row"><span class="detail-label">Próximo examen</span><span class="detail-value">Set 2024</span></div>
+      </div>
+
+      <div class="uni-actions">
+        <a href="detalle-universidad.html?id=unfv" class="btn-primary">Ver Detalles</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 
   <!-- Footer -->
   <footer class="footer">
@@ -550,9 +520,9 @@
     </a>
   </nav>
 
-  <script>
-    lucide.createIcons();
-  </script>
+  <script src="/pages/ExplorarCarreras/js/universidades.js"></script>
+<script src="/pages/js/user-info.js"></script>
+
 
 </body>
 </html>

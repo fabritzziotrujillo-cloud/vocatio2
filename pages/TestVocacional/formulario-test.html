@@ -1,37 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Formulario Test Vocacional - Vocatio</title>
+
+  <!-- estilos globales + específicos -->
   <link rel="stylesheet" href="../../styles/global.css">
   <link rel="stylesheet" href="../../styles/style.css">
   <link rel="stylesheet" href="components/formulario-test.css">
+
+  <!-- Lucide -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <style>
-    /* --- ESTILO DE ERRORES (solo añadido, no modifica lo tuyo) --- */
-    .error-msg {
-      color: #e53935;
-      font-size: 0.9rem;
-      margin-top: 4px;
-      display: none;
-      font-weight: 500;
-    }
-    .question-row.error {
-      background-color: #ffebee;
-      border-radius: 8px;
-      transition: background-color 0.4s ease;
-    }
-    .highlight {
-      background-color: #e8f5e9;
-      transition: background-color 0.6s ease;
-    }
-  </style>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L4NYN4CHVR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L4NYN4CHVR');
+</script>
 </head>
 <body>
-  <input type="checkbox" id="exitModalForm" class="modal-checkbox" hidden>
 
-  <!-- Header -->
+  <!-- Mobile Header -->
   <header class="mobile-header">
     <div class="mobile-header-content">
       <div class="logo-icon-small">V</div>
@@ -39,7 +32,7 @@
     </div>
   </header>
 
-  <!-- Navbar -->
+  <!-- Desktop Navbar (mantener siempre visible) -->
   <nav class="navbar">
     <div class="navbar-container">
       <div class="logo">
@@ -48,20 +41,56 @@
       </div>
 
       <div class="nav-items">
-        <a href="../inicio.html" class="nav-link"><i data-lucide="home"></i><span>Inicio</span></a>
-        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link active"><i data-lucide="clipboard-check"></i><span>Test Vocacional</span></a>
-        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link"><i data-lucide="search"></i><span>Explorar Carreras</span></a>
-        <a href="../Herramientas/herramientas-seccion.html" class="nav-link"><i data-lucide="clipboard-list"></i><span>Herramientas</span></a>
-        <a href="../Perfil/perfil-seccion.html" class="nav-link"><i data-lucide="user"></i><span>Mi Perfil</span></a>
-      </div>
-      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+      <a href="../inicio.html" class="nav-link">
+        <i data-lucide="home"></i>
+        <span>Inicio</span>
+      </a>
+      <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+        <i data-lucide="clipboard-check"></i>
+        <span>Test Vocacional</span>
+      </a>
+      <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+        <i data-lucide="search"></i>
+        <span>Explorar Carreras</span>
+      </a>
+      <a href="../Perfil/perfil-seccion.html" class="nav-link active">
+        <i data-lucide="user"></i>
+        <span>Mi Perfil</span>
+      </a>
     </div>
 
+      <!-- Avatar + Nombre (reemplaza el botón de Iniciar Sesión) -->
+<div id="nav-user" class="nav-user" style="position: relative; display:flex; align-items:center; gap:8px; cursor:pointer;">
+  <div id="userAvatar" class="nav-user-circle" style="
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: #5dade2; /* color si no hay foto */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      color: white;
+      font-size: 16px;
+  ">U</div>
+
+  <span id="userName" class="nav-user-name" style="font-weight: 600; color:#333;">Usuario</span>
+</div>
+    </div>
+
+    <!-- Breadcrumb -->
     <div class="breadcrumb">
       <div class="breadcrumb-container">
-        <a href="../../index.html" class="breadcrumb-link"><i data-lucide="home"></i><span>Inicio</span></a>
+        <a href="/pages/inicio.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
         <span class="breadcrumb-separator">/</span>
-        <a href="test-vocacional-seccion.html" class="breadcrumb-link"><span>Test Vocacionales</span></a>
+        <a href="test-vocacional-seccion.html" class="breadcrumb-link">
+          <span>Test Vocacionales</span>
+        </a>
         <span class="breadcrumb-separator">/</span>
         <span class="breadcrumb-current">Formulario</span>
       </div>
@@ -73,139 +102,43 @@
     <div class="formulario-hero-content">
       <div class="hero-icon"><i data-lucide="target"></i></div>
       <h1 class="hero-title">¡Tu vocación te está esperando!</h1>
-      <p class="hero-subtitle">Responde 5 bloques de preguntas y despeja tus dudas</p>
+      <p class="hero-subtitle">Responde 25 afirmaciones y obtén tus compatibilidades por área.</p>
     </div>
   </section>
 
   <!-- Main -->
   <main class="formulario-main">
     <div class="formulario-container">
-      <form class="test-form" id="testForm">
-        <div class="question-block">
-          <div class="block-header">
-            <h2 class="block-title">Bloque 1: Tus preferencias naturales</h2>
-            <p class="block-description">Responde con sinceridad. No hay respuestas correctas o incorrectas. Elige la opción que mejor describa tu tendencia natural.</p>
-          </div>
-
-          <div class="questions-table">
-            <div class="table-header">
-              <div class="header-option">Opciones</div>
-              <div class="header-response">Sí</div>
-              <div class="header-response">No</div>
-              <div class="header-response">¿?</div>
-            </div>
-
-            <!-- Preguntas -->
-            <div class="question-row">
-              <div class="question-text"><span class="question-number">1.</span> ¿Disfrutas resolver problemas matemáticos o científicos?</div>
-              <div class="question-options">
-                <label><input type="radio" name="q1" value="si" required></label>
-                <label><input type="radio" name="q1" value="no"></label>
-                <label><input type="radio" name="q1" value="duda"></label>
-              </div>
-              <div class="error-msg">⚠️ Completa esta pregunta antes de continuar.</div>
-            </div>
-
-            <div class="question-row">
-              <div class="question-text"><span class="question-number">2.</span> ¿Te gusta tomar el liderazgo en proyectos grupales?</div>
-              <div class="question-options">
-                <label><input type="radio" name="q2" value="si" required></label>
-                <label><input type="radio" name="q2" value="no"></label>
-                <label><input type="radio" name="q2" value="duda"></label>
-              </div>
-              <div class="error-msg">⚠️ Completa esta pregunta antes de continuar.</div>
-            </div>
-
-            <div class="question-row">
-              <div class="question-text"><span class="question-number">3.</span> ¿Disfrutas crear cosas originales (dibujar, escribir, diseñar)?</div>
-              <div class="question-options">
-                <label><input type="radio" name="q3" value="si" required></label>
-                <label><input type="radio" name="q3" value="no"></label>
-                <label><input type="radio" name="q3" value="duda"></label>
-              </div>
-              <div class="error-msg">⚠️ Completa esta pregunta antes de continuar.</div>
-            </div>
-
-            <div class="question-row">
-              <div class="question-text"><span class="question-number">4.</span> ¿Te motiva ayudar a otros con sus problemas personales?</div>
-              <div class="question-options">
-                <label><input type="radio" name="q4" value="si" required></label>
-                <label><input type="radio" name="q4" value="no"></label>
-                <label><input type="radio" name="q4" value="duda"></label>
-              </div>
-              <div class="error-msg">⚠️ Completa esta pregunta antes de continuar.</div>
-            </div>
-
-            <div class="question-row">
-              <div class="question-text"><span class="question-number">5.</span> ¿Prefieres actividades manuales o construir cosas?</div>
-              <div class="question-options">
-                <label><input type="radio" name="q5" value="si" required></label>
-                <label><input type="radio" name="q5" value="no"></label>
-                <label><input type="radio" name="q5" value="duda"></label>
-              </div>
-              <div class="error-msg">⚠️ Completa esta pregunta antes de continuar.</div>
-            </div>
-          </div>
+      <form id="vocatioTestForm" class="test-form" novalidate>
+        <div class="note">
+          Escala: <strong>Muy de acuerdo (4)</strong> → <strong>Muy en desacuerdo (1)</strong>
         </div>
 
-        <!-- Botones -->
+        <div class="questions-grid" id="questionsGrid">
+          <!-- preguntas (se inyectan desde JS) -->
+        </div>
+
         <div class="form-actions">
-          <label for="exitModalForm" class="btn-salir">Salir</label>
-          <button type="button" class="btn-siguiente" id="btnNext">
-            Siguiente <i data-lucide="arrow-right"></i>
-          </button>
+          <button type="submit" class="btn-submit">Ver Resultado</button>
         </div>
       </form>
     </div>
   </main>
 
-  <!-- Footer -->
+  <!-- Footer (puedes mantener tu footer habitual) -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+      <p>&copy; 2025 Vocatio. Todos los derechos reservados.</p>
     </div>
   </footer>
 
   <script>
+    // Activa íconos lucide
     lucide.createIcons();
-
-    const form = document.getElementById("testForm");
-    const nextBtn = document.getElementById("btnNext");
-
-    nextBtn.addEventListener("click", () => {
-      const questions = [...form.querySelectorAll(".question-row")];
-      let valid = true;
-
-      questions.forEach(q => {
-        const checked = q.querySelector("input:checked");
-        const errorMsg = q.querySelector(".error-msg");
-
-        if (!checked) {
-          q.classList.add("error");
-          errorMsg.style.display = "block";
-          valid = false;
-        } else {
-          q.classList.remove("error");
-          errorMsg.style.display = "none";
-        }
-      });
-
-      if (valid) {
-        window.location.href = "resultados-test.html";
-      }
-    });
-
-    // Cuando el usuario marca una opción, quitar el error
-    form.querySelectorAll("input[type='radio']").forEach(input => {
-      input.addEventListener("change", e => {
-        const row = e.target.closest(".question-row");
-        row.classList.remove("error");
-        const errorMsg = row.querySelector(".error-msg");
-        if (errorMsg) errorMsg.style.display = "none";
-        row.classList.add("highlight");
-        setTimeout(() => row.classList.remove("highlight"), 600);
-      });
-    });
   </script>
+
+  <!-- Script del formulario -->
+  <script src="/pages/TestVocacional/js/formulario-test.js"></script>
+  <script src="/pages/js/user-info.js"></script>
 </body>
 </html>

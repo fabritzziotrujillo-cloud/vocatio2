@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="../../styles/style.css">
   <link rel="stylesheet" href="components/detalle-universidad.css">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L4NYN4CHVR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L4NYN4CHVR');
+</script>
 </head>
 <body>
 
@@ -28,36 +37,50 @@
       </div>
 
       <div class="nav-items">
-        <a href="../inicio.html" class="nav-link">
-          <i data-lucide="home"></i>
-          <span>Inicio</span>
-        </a>
-        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
-          <i data-lucide="clipboard-check"></i>
-          <span>Test Vocacional</span>
-        </a>
-        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link active">
-          <i data-lucide="search"></i>
-          <span>Explorar Carreras</span>
-        </a>
-        <a href="../Herramientas/herramientas-seccion.html" class="nav-link ">
-          <i data-lucide="clipboard-list"></i>
-          <span>Herramientas</span>
-        </a>
-        <a href="../Perfil/perfil-seccion.html" class="nav-link">
-          <i data-lucide="user"></i>
-          <span>Mi Perfil</span>
-        </a>
-      </div>
+      <a href="../inicio.html" class="nav-link">
+        <i data-lucide="home"></i>
+        <span>Inicio</span>
+      </a>
+      <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+        <i data-lucide="clipboard-check"></i>
+        <span>Test Vocacional</span>
+      </a>
+      <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+        <i data-lucide="search"></i>
+        <span>Explorar Carreras</span>
+      </a>
+      <a href="../Perfil/perfil-seccion.html" class="nav-link active">
+        <i data-lucide="user"></i>
+        <span>Mi Perfil</span>
+      </a>
+    </div>
 
-      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+      <!-- Avatar + Nombre (reemplaza el botón de Iniciar Sesión) -->
+<div id="nav-user" class="nav-user" style="position: relative; display:flex; align-items:center; gap:8px; cursor:pointer;">
+  <div id="userAvatar" class="nav-user-circle" style="
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: #5dade2; /* color si no hay foto */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      color: white;
+      font-size: 16px;
+  ">U</div>
+
+  <span id="userName" class="nav-user-name" style="font-weight: 600; color:#333;">Usuario</span>
+</div>
     </div>
   </nav>
 
   <!-- Breadcrumb -->
   <div class="breadcrumb">
     <div class="breadcrumb-container">
-      <a href="../../index.html" class="breadcrumb-link">
+      <a href="/pages/inicio.html" class="breadcrumb-link">
         <i data-lucide="home"></i>
         <span>Inicio</span>
       </a>
@@ -80,7 +103,7 @@
       </a>
 
       <div class="uni-detail-title-section">
-        <h1 class="uni-detail-title">Universidad Peruana de Ciencias Aplicadas (UPC)</h1>
+        <h1 class="uni-detail-title"></h1>
         <div class="uni-detail-badges">
           <span class="badge acreditada">
             <i data-lucide="check-circle"></i>
@@ -98,13 +121,13 @@
         </div>
         <div class="quick-info-item">
           <span class="quick-label">Ubicación</span>
-          <span class="quick-value">Villa / San Isidro, Lima</span>
+          <span class="quick-value"></span>
         </div>
         <div class="quick-info-item">
           <span class="quick-label">Rating</span>
           <span class="quick-value">
             <i data-lucide="star"></i>
-            4.7/5
+      
           </span>
         </div>
         <div class="quick-info-item">
@@ -142,32 +165,8 @@
               <i data-lucide="info"></i>
               Información General
             </h2>
-            <div class="info-rows">
-              <div class="info-row">
-                <span class="info-label">Fundación</span>
-                <span class="info-value">1994</span>
-              </div>
-              <div class="info-row">
-                <span class="info-label">Tipo de institución</span>
-                <span class="info-value">Universidad privada</span>
-              </div>
-              <div class="info-row">
-                <span class="info-label">Facultades</span>
-                <span class="info-value">15 facultades</span>
-              </div>
-              <div class="info-row">
-                <span class="info-label">Estudiantes</span>
-                <span class="info-value">25,000+ estudiantes</span>
-              </div>
-              <div class="info-row">
-                <span class="info-label">Docentes</span>
-                <span class="info-value">1,500+ docentes</span>
-              </div>
-              <div class="info-row">
-                <span class="info-label">Acreditaciones internacionales</span>
-                <span class="info-value">ABET, ACBSP, FIBAA</span>
-              </div>
-            </div>
+            <div class="info-rows"></div>
+
           </div>
 
           <!-- Modalidades -->
@@ -198,27 +197,7 @@
               <i data-lucide="map-pin"></i>
               Sedes y Ubicación
             </h2>
-            <div class="locations-list">
-              <div class="location-item">
-                <div class="location-header">
-                  <strong>Campus San Isidro</strong>
-                  <span class="location-badge">Principal</span>
-                </div>
-                <p>Av. Paseo de la República 6100, San Isidro</p>
-              </div>
-              <div class="location-item">
-                <div class="location-header">
-                  <strong>Campus Monterrico</strong>
-                </div>
-                <p>Av. Antares 110, La Molina</p>
-              </div>
-              <div class="location-item">
-                <div class="location-header">
-                  <strong>Campus Piura</strong>
-                </div>
-                <p>Mz. A, Lot. 1, Urb. Cerro Grande, Piura</p>
-              </div>
-            </div>
+            <div class="locations-list"></div>
           </div>
         </div>
 
@@ -233,19 +212,19 @@
             <div class="costs-container">
               <div class="cost-item">
                 <span class="cost-label">Costo mensual</span>
-                <span class="cost-value">$800</span>
+                <span class="cost-value"></span>
               </div>
               <div class="cost-item">
                 <span class="cost-label">Costo anual aprox.</span>
-                <span class="cost-value">$9,600</span>
+                <span class="cost-value"></span>
               </div>
               <div class="cost-item">
                 <span class="cost-label">Duración de carrera</span>
-                <span class="cost-value">5 años</span>
+                <span class="cost-value"></span>
               </div>
               <div class="cost-item">
                 <span class="cost-label">Costo total aprox.</span>
-                <span class="cost-value">$48,000</span>
+                <span class="cost-value"></span>
               </div>
             </div>
             <p class="cost-note">Los costos pueden variar según la carrera y promociones vigentes</p>
@@ -299,20 +278,7 @@
               <i data-lucide="phone"></i>
               Información de Contacto
             </h2>
-            <div class="contact-info">
-              <p>
-                <strong>Teléfono:</strong><br>
-                <a href="tel:+5116262800">(+51 1) 626-2800</a>
-              </p>
-              <p>
-                <strong>Email:</strong><br>
-                <a href="mailto:admisión@upc.edu.pe">admisión@upc.edu.pe</a>
-              </p>
-              <p>
-                <strong>Web oficial:</strong><br>
-                <a href="#" target="_blank">www.upc.edu.pe</a>
-              </p>
-            </div>
+            <div class="contact-info"></div>
           </div>
         </div>
       </div>
@@ -467,6 +433,81 @@
   <script>
     lucide.createIcons();
   </script>
+<!-- Modal Bonito + JavaScript Decorado -->
+<style>
+  .custom-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
 
+  .custom-modal {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    animation: fadeInUp 0.3s ease;
+  }
+
+  .custom-modal h3 {
+    margin-bottom: 10px;
+    color: #1e293b;
+    font-size: 20px;
+  }
+
+  .custom-modal p {
+    font-size: 15px;
+    margin-bottom: 25px;
+    color: #475569;
+  }
+
+  .custom-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .modal-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .modal-confirm {
+    background: #2563eb;
+    color: #fff;
+  }
+
+  .modal-confirm:hover {
+    background: #1e40af;
+  }
+
+  .modal-cancel {
+    background: #e2e8f0;
+    color: #334155;
+  }
+
+  .modal-cancel:hover {
+    background: #cbd5e1;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script src="/pages/ExplorarCarreras/js/detalle-universidad.js"></script>
+<script src="/pages/js/user-info.js"></script>
 </body>
 </html>

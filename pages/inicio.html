@@ -42,6 +42,15 @@
       transform: translateY(0);
     }
   </style>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L4NYN4CHVR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L4NYN4CHVR');
+</script>
 </head>
 
 <body>
@@ -75,17 +84,24 @@
           <i data-lucide="search"></i>
           <span>Explorar Carreras</span>
         </a>
-        <a href="./Herramientas/herramientas-seccion.html" class="nav-link">
-          <i data-lucide="clipboard-list"></i>
-          <span>Herramientas</span>
-        </a>
         <a href="./Perfil/perfil-seccion.html" class="nav-link">
           <i data-lucide="user"></i>
           <span>Mi Perfil</span>
         </a>
       </div>
+      <!-- Perfil Usuario -->
 
-      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+<div id="nav-user" class="nav-user">
+    <span id="userName" class="user-name"></span>
+    <div id="userAvatar" class="avatar-circle">U</div>
+
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="./Perfil/perfil-seccion.html">Mi Perfil</a>
+        <a href="/pages/Perfil/configuracion-perfil.html">Configuración</a>
+        <a href="#" id="logoutBtn">Cerrar Sesión</a>
+    </div>
+</div>
+
     </div>
   </nav>
 
@@ -146,17 +162,8 @@
           <a href="./ExplorarCarreras/explorar-carreras-seccion.html" class="tool-link">Explorar <i data-lucide="arrow-right"></i></a>
         </div>
 
-        <!-- Herramientas de Planificación -->
-        <div class="tool-card fade-in">
-          <div class="tool-header blue"></div>
-          <div class="tool-icon-circle blue">
-            <i data-lucide="clipboard-list"></i>
-          </div>
-          <h3 class="tool-title">Herramientas de Planificación</h3>
-          <p class="tool-description">Calcula costos, tiempos de estudio y planifica tu futuro</p>
-          <a href="./Herramientas/herramientas-seccion.html" class="tool-link">Explorar <i data-lucide="arrow-right"></i></a>
-        </div>
 
+        
         <!-- Recursos Educativos -->
         <div class="tool-card fade-in">
           <div class="tool-header yellow"></div>
@@ -165,20 +172,8 @@
           </div>
           <h3 class="tool-title">Recursos Educativos</h3>
           <p class="tool-description">Videos, guías y materiales para tu orientación vocacional</p>
-          <a href="#" class="tool-link">Explorar <i data-lucide="arrow-right"></i></a>
+          <a href="/pages/TestVocacional/recursos-educativos.html" class="tool-link">Explorar <i data-lucide="arrow-right"></i></a>
         </div>
-
-        <!-- Galería de Proyectos -->
-        <div class="tool-card fade-in">
-          <div class="tool-header pink"></div>
-          <div class="tool-icon-circle pink">
-            <i data-lucide="folder"></i>
-          </div>
-          <h3 class="tool-title">Galería de Proyectos</h3>
-          <p class="tool-description">Conoce proyectos reales de estudiantes universitarios</p>
-          <a href="#" class="tool-link">Explorar <i data-lucide="arrow-right"></i></a>
-        </div>
-
       </div>
     </div>
   </section>
@@ -215,5 +210,6 @@
       }, 3500);
     });
   </script>
+ <script src="/pages/js/user-info.js"></script>
 </body>
 </html>

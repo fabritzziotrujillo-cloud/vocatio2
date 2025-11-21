@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="../../../styles/style.css">
   <link rel="stylesheet" href="components/generar-reporte.css">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L4NYN4CHVR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L4NYN4CHVR');
+</script>
 
   <style>
     /* --- Animaciones suaves de aparición --- */
@@ -72,14 +81,43 @@
       </div>
 
       <div class="nav-items">
-        <a href="../../inicio.html" class="nav-link"><i data-lucide="home"></i><span>Inicio</span></a>
-        <a href="../../TestVocacional/test-vocacional-seccion.html" class="nav-link"><i data-lucide="clipboard-check"></i><span>Test Vocacional</span></a>
-        <a href="../../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link"><i data-lucide="search"></i><span>Explorar Carreras</span></a>
-        <a href="../../Herramientas/herramientas-seccion.html" class="nav-link"><i data-lucide="clipboard-list"></i><span>Herramientas</span></a>
-        <a href="../../Perfil/perfil-seccion.html" class="nav-link active"><i data-lucide="user"></i><span>Mi Perfil</span></a>
-      </div>
+      <a href="../inicio.html" class="nav-link">
+        <i data-lucide="home"></i>
+        <span>Inicio</span>
+      </a>
+      <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+        <i data-lucide="clipboard-check"></i>
+        <span>Test Vocacional</span>
+      </a>
+      <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+        <i data-lucide="search"></i>
+        <span>Explorar Carreras</span>
+      </a>
+      <a href="../Perfil/perfil-seccion.html" class="nav-link active">
+        <i data-lucide="user"></i>
+        <span>Mi Perfil</span>
+      </a>
+    </div>
 
-      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+      <!-- Avatar + Nombre (reemplaza el botón de Iniciar Sesión) -->
+<div id="nav-user" class="nav-user" style="position: relative; display:flex; align-items:center; gap:8px; cursor:pointer;">
+  <div id="userAvatar" class="nav-user-circle" style="
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: #5dade2; /* color si no hay foto */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      color: white;
+      font-size: 16px;
+  ">U</div>
+
+  <span id="userName" class="nav-user-name" style="font-weight: 600; color:#333;">Usuario</span>
+</div>
     </div>
 
     <!-- Breadcrumb -->
@@ -210,27 +248,7 @@
     <a href="../perfil-seccion.html" class="bottom-nav-item active"><i data-lucide="user"></i></a>
   </nav>
 
-  <script>
-    lucide.createIcons();
-
-    // --- Animación de aparición al hacer scroll ---
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
-
-    fadeEls.forEach(el => observer.observe(el));
-
-    // --- Confirmación visual al descargar ---
-    const downloadBtn = document.getElementById('downloadBtn');
-    const confirmMsg = document.getElementById('downloadConfirm');
-
-    downloadBtn.addEventListener('click', () => {
-      confirmMsg.style.display = 'block';
-      setTimeout(() => confirmMsg.style.display = 'none', 2500);
-    });
-  </script>
+  <script src="/pages/Perfil/js/vista-previa-reporte.js"></script>
+  <script src="/pages/js/user-info.js"></script>
 </body>
 </html>

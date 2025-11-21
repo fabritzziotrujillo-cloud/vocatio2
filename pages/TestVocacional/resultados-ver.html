@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resultados Guardados - Vocatio</title>
+
+  <!-- Estilos globales -->
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="components/resultados-ver.css">
+
+  <!-- Lucide -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L4NYN4CHVR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L4NYN4CHVR');
+</script>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+      <a href="../inicio.html" class="nav-link">
+        <i data-lucide="home"></i>
+        <span>Inicio</span>
+      </a>
+      <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+        <i data-lucide="clipboard-check"></i>
+        <span>Test Vocacional</span>
+      </a>
+      <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+        <i data-lucide="search"></i>
+        <span>Explorar Carreras</span>
+      </a>
+      <a href="../Perfil/perfil-seccion.html" class="nav-link active">
+        <i data-lucide="user"></i>
+        <span>Mi Perfil</span>
+      </a>
+    </div>
+
+      <!-- Avatar + Nombre (reemplaza el botón de Iniciar Sesión) -->
+<div id="nav-user" class="nav-user" style="position: relative; display:flex; align-items:center; gap:8px; cursor:pointer;">
+  <div id="userAvatar" class="nav-user-circle" style="
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: #5dade2; /* color si no hay foto */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      color: white;
+      font-size: 16px;
+  ">U</div>
+
+  <span id="userName" class="nav-user-name" style="font-weight: 600; color:#333;">Usuario</span>
+</div>
+
+    </div>
+
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="/pages/inicio.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../Historial/historial-evaluaciones.html" class="breadcrumb-link">
+          Historial de Evaluaciones
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Ver Resultado</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="resultados-hero">
+    <div class="resultados-hero-content">
+      <div class="hero-icon"><i data-lucide="award"></i></div>
+      <h1 class="hero-title">Resultado Guardado</h1>
+      <p class="hero-subtitle">Este es el resultado de una evaluación anterior.</p>
+    </div>
+  </section>
+
+  <main class="resultados-main">
+    <div class="resultados-container">
+
+      <div class="top-result-card" id="topAreaCard"></div>
+
+      <h2 class="section-title">Compatibilidades por Área</h2>
+      <div class="areas-grid" id="areasGrid"></div>
+
+      <h2 class="section-title">Carreras Recomendadas</h2>
+      <div class="reco-container" id="recoContainer"></div>
+
+      <div class="actions">
+        <button id="btnDescargar" class="btn-primary">Descargar PDF</button>
+        <a href="/pages/TestVocacional/historial-evaluaciones.html" class="btn-secondary">Volver al Historial</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Vocatio. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="js/resultados-ver.js"></script>
+  <script src="/pages/js/user-info.js"></script>
+  <script> lucide.createIcons(); </script>
+</body>
+</html>

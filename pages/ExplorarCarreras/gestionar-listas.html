@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="../../styles/style.css">
   <link rel="stylesheet" href="components/gestionar-listas.css">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L4NYN4CHVR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L4NYN4CHVR');
+</script>
 </head>
 <body>
 
@@ -28,35 +37,50 @@
       </div>
 
       <div class="nav-items">
-        <a href="../inicio.html" class="nav-link">
-          <i data-lucide="home"></i>
-          <span>Inicio</span>
-        </a>
-        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
-          <i data-lucide="clipboard-check"></i>
-          <span>Test Vocacional</span>
-        </a>
-        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link active">
-          <i data-lucide="search"></i>
-          <span>Explorar Carreras</span>
-        </a>
-        <a href="../Herramientas/herramientas-seccion.html" class="nav-link">
-          <i data-lucide="clipboard-list"></i>
-          <span>Herramientas</span>
-        </a>
-        <a href="../Perfil/perfil-seccion.html" class="nav-link">
-          <i data-lucide="user"></i>
-          <span>Mi Perfil</span>
-        </a>
-      </div>
+      <a href="../inicio.html" class="nav-link">
+        <i data-lucide="home"></i>
+        <span>Inicio</span>
+      </a>
+      <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+        <i data-lucide="clipboard-check"></i>
+        <span>Test Vocacional</span>
+      </a>
+      <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+        <i data-lucide="search"></i>
+        <span>Explorar Carreras</span>
+      </a>
+      <a href="../Perfil/perfil-seccion.html" class="nav-link active">
+        <i data-lucide="user"></i>
+        <span>Mi Perfil</span>
+      </a>
+    </div>
 
-      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+      <!-- Avatar + Nombre (reemplaza el botón de Iniciar Sesión) -->
+<div id="nav-user" class="nav-user" style="position: relative; display:flex; align-items:center; gap:8px; cursor:pointer;">
+  <div id="userAvatar" class="nav-user-circle" style="
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: #5dade2; /* color si no hay foto */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      color: white;
+      font-size: 16px;
+  ">U</div>
+
+  <span id="userName" class="nav-user-name" style="font-weight: 600; color:#333;">Usuario</span>
+</div>
+
     </div>
 
     <!-- Breadcrumb -->
     <div class="breadcrumb">
       <div class="breadcrumb-container">
-        <a href="../../index.html" class="breadcrumb-link">
+        <a href="/pages/inicio.html" class="breadcrumb-link">
           <i data-lucide="home"></i>
           <span>Inicio</span>
         </a>
@@ -87,89 +111,13 @@
   <section class="lists-section">
     <div class="container">
       <div class="lists-header">
-        <h2 class="lists-count">Mis Listas (3)</h2>
+        <h2 class="lists-count">Mis Listas</h2>
         <button class="btn-new-list" hre>
           <i data-lucide="plus"></i>
           <span>Nueva Lista</span>
         </button>
       </div>
-
-      <!-- Lists Container -->
-      <div class="lists-container">
-        <!-- List 1 -->
-        <div class="list-item">
-          <div class="list-item-content">
-            <h3 class="list-item-title">Mis Opciones Principales</h3>
-            <p class="list-item-meta">3 carreras • Creada hace 2 días</p>
-            <div class="list-item-preview">
-              <div class="career-thumb">
-                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=80&h=80&fit=crop" alt="Ingeniería de Software">
-              </div>
-              <div class="career-thumb">
-                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=80&h=80&fit=crop" alt="Medicina">
-              </div>
-              <div class="career-thumb">
-                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=80&h=80&fit=crop" alt="Diseño Gráfico">
-              </div>
-            </div>
-          </div>
-          <div class="list-item-actions">
-            <button class="list-action-btn edit">
-              <span>Editar</span>
-            </button>
-            <button class="list-action-btn delete">
-              <span>Eliminar</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- List 2 -->
-        <div class="list-item">
-          <div class="list-item-content">
-            <h3 class="list-item-title">Para Investigar Más</h3>
-            <p class="list-item-meta">2 carreras • Creada hace 1 semana</p>
-            <div class="list-item-preview">
-              <div class="career-thumb">
-                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=80&h=80&fit=crop" alt="Medicina">
-              </div>
-              <div class="career-thumb">
-                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=80&h=80&fit=crop" alt="Ingeniería de Software">
-              </div>
-            </div>
-          </div>
-          <div class="list-item-actions">
-            <button class="list-action-btn edit">
-              <span>Editar</span>
-            </button>
-            <button class="list-action-btn delete">
-              <span>Eliminar</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- List 3 -->
-        <div class="list-item">
-          <div class="list-item-content">
-            <h3 class="list-item-title">Plan B</h3>
-            <p class="list-item-meta">1 carrera • Creada hace 2 semanas</p>
-            <div class="list-item-preview">
-              <div class="career-thumb">
-                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=80&h=80&fit=crop" alt="Diseño Gráfico">
-              </div>
-            </div>
-          </div>
-          <div class="list-item-actions">
-            <button class="list-action-btn edit">
-              <span>Editar</span>
-            </button>
-            <button class="list-action-btn delete">
-              <span>Eliminar</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <div class="lists-container"></div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -251,6 +199,90 @@
   <script>
     lucide.createIcons();
   </script>
+<style>
+  /* Overlay */
+  .vocatio-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.25s ease;
+  }
 
+  /* Modal */
+  .vocatio-modal {
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 28px 25px;
+    width: 92%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 10px 32px rgba(0,0,0,0.18);
+    animation: zoomIn 0.25s ease;
+  }
+
+  .vocatio-modal h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 8px;
+  }
+
+  .vocatio-modal p {
+    font-size: 15px;
+    color: #475569;
+    margin-bottom: 25px;
+  }
+
+  .vocatio-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .vocatio-btn {
+    padding: 10px 25px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: 0.2s ease;
+  }
+
+  .vocatio-confirm {
+    background: #dc2626;
+    color: white;
+  }
+
+  .vocatio-confirm:hover {
+    background: #b91c1c;
+  }
+
+  .vocatio-cancel {
+    background: #e2e8f0;
+    color: #334155;
+  }
+
+  .vocatio-cancel:hover {
+    background: #cbd5e1;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes zoomIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+</style>
+
+<script src="/pages/ExplorarCarreras/js/gestionar-lista.js"></script>
+<script src="/pages/js/user-info.js"></script>
 </body>
 </html>

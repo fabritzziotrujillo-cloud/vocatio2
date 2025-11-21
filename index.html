@@ -1,71 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vocatio - Bienvenida</title>
-    <link rel="stylesheet" href="css/Estilos.css">
+    <link rel="stylesheet" href="css/Estilos.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L4NYN4CHVR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L4NYN4CHVR');
+</script>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Bienvenido a Vocatio!</h1>
-            <p>Para empezar queremos saber si eres menor o mayor de edad para que tengas una experiencia intuitiva!</p>
+            <h1>¡Bienvenido a Vocatio!</h1>
+            <p>
+                Vocatio es una plataforma diseñada para ayudarte a descubrir tus
+                intereses, habilidades y posibles caminos profesionales. Nuestro propósito
+                es acompañarte en tu proceso vocacional con herramientas claras, dinámicas
+                y sencillas de usar.
+            </p>
         </header>
-        
-        <main class="opciones-edad">
-            <div class="opcion opcion-mayor" data-tipo="mayor">
-                <h2>Eres mayor de 18 años</h2>
-                <p>Haz click en esta casilla para iniciar sesión</p>
-                <a href="Crear cuentas/crearcuenta1.html" class="btn">Mayor de 18 años</a>
-            </div>
-            
-            <div class="opcion opcion-menor" data-tipo="menor">
-                <h2>Todavía no cumples los 18?</h2>
-                <p>Haz click en esta casilla para iniciar sesión con una experiencia acuerdo a tu edad</p>
-                <a href="Crear cuentas/crearcuenta2.html" class="btn">Menor de 18 años</a>
-            </div>
-        </main>
 
-        <div id="mensaje" class="mensaje-info"></div>
+        <a href="/Crear cuentas/crearcuenta1.html" class="btn-login">Iniciar sesión</a>
+
+        <section class="info">
+            <h2>¿Qué encontrarás en Vocatio?</h2>
+            <ul>
+                <li>Tests vocacionales enfocados en tus habilidades reales.</li>
+                <li>Perfiles de carreras explicados de forma clara.</li>
+                <li>Guías según tu personalidad e intereses.</li>
+                <li>Recomendaciones personalizadas basadas en tu progreso.</li>
+            </ul>
+        </section>
     </div>
 
     <script>
-        // Referencias
-        const opciones = document.querySelectorAll('.opcion');
-        const mensaje = document.getElementById('mensaje');
-        let seleccion = null;
-
-        // Evento cuando el usuario pasa el mouse
-        opciones.forEach(opcion => {
-            opcion.addEventListener('mouseenter', () => {
-                const tipo = opcion.dataset.tipo;
-                mensaje.textContent = tipo === 'mayor'
-                    ? "Podrás crear tu cuenta con acceso completo a las funciones de orientación."
-                    : "Te guiaremos con herramientas adaptadas a tu edad.";
-                mensaje.style.display = "block";
-            });
-
-            // Limpiar mensaje al salir
-            opcion.addEventListener('mouseleave', () => {
-                mensaje.textContent = "";
-                mensaje.style.display = "none";
-            });
-
-            // Guardar selección
-            opcion.addEventListener('click', () => {
-                seleccion = opcion.dataset.tipo;
-            });
-        });
-
-        // Validación al intentar salir sin elegir (por si hay otros botones en el futuro)
-        window.addEventListener('beforeunload', (e) => {
-            if (!seleccion) {
-                e.preventDefault();
-                e.returnValue = '';
-                alert("Por favor selecciona una opción antes de continuar.");
-            }
-        });
+        console.log("Página de bienvenida cargada correctamente.");
     </script>
 </body>
 </html>

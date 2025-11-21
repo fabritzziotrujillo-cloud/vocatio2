@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="../../styles/style.css">
   <link rel="stylesheet" href="components/test-vocacional-tradicional.css">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L4NYN4CHVR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L4NYN4CHVR');
+</script>
 
   <style>
     /* Animación fade-in */
@@ -72,35 +81,50 @@
       </div>
 
       <div class="nav-items">
-        <a href="../inicio.html" class="nav-link">
-          <i data-lucide="home"></i>
-          <span>Inicio</span>
-        </a>
-        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link active">
-          <i data-lucide="clipboard-check"></i>
-          <span>Test Vocacional</span>
-        </a>
-        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
-          <i data-lucide="search"></i>
-          <span>Explorar Carreras</span>
-        </a>
-        <a href="../Herramientas/herramientas-seccion.html" class="nav-link ">
-          <i data-lucide="clipboard-list"></i>
-          <span>Herramientas</span>
-        </a>
-        <a href="../Perfil/perfil-seccion.html" class="nav-link">
-          <i data-lucide="user"></i>
-          <span>Mi Perfil</span>
-        </a>
-      </div>
+      <a href="../inicio.html" class="nav-link">
+        <i data-lucide="home"></i>
+        <span>Inicio</span>
+      </a>
+      <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+        <i data-lucide="clipboard-check"></i>
+        <span>Test Vocacional</span>
+      </a>
+      <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+        <i data-lucide="search"></i>
+        <span>Explorar Carreras</span>
+      </a>
+      <a href="../Perfil/perfil-seccion.html" class="nav-link active">
+        <i data-lucide="user"></i>
+        <span>Mi Perfil</span>
+      </a>
+    </div>
 
-      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+      <!-- Avatar + Nombre (reemplaza el botón de Iniciar Sesión) -->
+<div id="nav-user" class="nav-user" style="position: relative; display:flex; align-items:center; gap:8px; cursor:pointer;">
+  <div id="userAvatar" class="nav-user-circle" style="
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: #5dade2; /* color si no hay foto */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      color: white;
+      font-size: 16px;
+  ">U</div>
+
+  <span id="userName" class="nav-user-name" style="font-weight: 600; color:#333;">Usuario</span>
+</div>
+
     </div>
 
     <!-- Breadcrumb -->
     <div class="breadcrumb">
       <div class="breadcrumb-container">
-        <a href="../../index.html" class="breadcrumb-link">
+        <a href="/pages/inicio.html" class="breadcrumb-link">
           <i data-lucide="home"></i>
           <span>Inicio</span>
         </a>
@@ -282,85 +306,7 @@
   <div id="welcomePopup" class="popup">👋 ¡Bienvenido al Test Vocacional!</div>
   <div id="errorPopup" class="popup error" style="display:none;">⚠️ Selecciona un área antes de explorar</div>
 
-  <script>
-    // Activa íconos Lucide
-    lucide.createIcons();
-
-    // Fade-in con IntersectionObserver
-    const fades = document.querySelectorAll('.fade-in');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.18 });
-
-    fades.forEach(f => io.observe(f));
-
-    // Popup de bienvenida al cargar la página (3s)
-    window.addEventListener('load', () => {
-      const welcome = document.getElementById('welcomePopup');
-      welcome.classList.add('show');
-      setTimeout(() => welcome.classList.remove('show'), 3200);
-    });
-
-    // Lógica de la barra lateral: seleccionar área
-    const sidebarOptions = document.querySelectorAll('.sidebar-option');
-    let selectedArea = null;
-
-    sidebarOptions.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // remover activo previo
-        sidebarOptions.forEach(b => b.classList.remove('active'));
-        // marcar el seleccionado
-        btn.classList.add('active');
-        selectedArea = btn.dataset.area;
-
-        // mostrar breve feedback (puede ser un pequeño popup)
-        const temp = document.createElement('div');
-        temp.className = 'popup';
-        temp.style.right = '20px';
-        temp.style.top = '80px';
-        temp.textContent = 'Área seleccionada: ' + btn.textContent.trim();
-        document.body.appendChild(temp);
-        // animación y borrado
-        requestAnimationFrame(() => temp.classList.add('show'));
-        setTimeout(() => {
-          temp.classList.remove('show');
-          setTimeout(() => temp.remove(), 400);
-        }, 1400);
-      });
-    });
-
-    // Botón Explorar más carreras: validar selección antes de navegar
-    const btnExplore = document.getElementById('btnExplore');
-    btnExplore.addEventListener('click', () => {
-      if (!selectedArea) {
-        const err = document.getElementById('errorPopup');
-        err.style.display = 'block';
-        // mostrar y ocultar con clase
-        requestAnimationFrame(() => err.classList.add('show'));
-        setTimeout(() => {
-          err.classList.remove('show');
-          setTimeout(() => err.style.display = 'none', 350);
-        }, 2200);
-        return;
-      }
-      // si hay selección, redirigir agregando query param para usarlo en la página de exploración
-      // por ejemplo: explorar-carreras-seccion.html?area=ciencias
-      window.location.href = `../ExplorarCarreras/explorar-carreras-seccion.html?area=${encodeURIComponent(selectedArea)}`;
-    });
-
-    // Botón iniciar test: agregar pequeño feedback antes de redirigir
-    const startBtn = document.getElementById('startTestBtn');
-    startBtn.addEventListener('click', () => {
-      startBtn.disabled = true;
-      startBtn.textContent = 'Cargando...';
-      setTimeout(() => {
-        // redirigir al formulario del test (manteniendo la ruta que ya tenías)
-        window.location.href = 'formulario-test.html';
-      }, 300);
-    });
-  </script>
-
+  <script src="js/test-vocacional-tradicional.js"></script>
+<script src="/pages/js/user-info.js"></script>
 </body>
 </html>

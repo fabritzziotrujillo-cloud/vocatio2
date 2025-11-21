@@ -3,122 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vocatio - Registrate</title>
-    <link rel="stylesheet" href="css/Estilo-mayores.css">
-    <style>
-        /* ESTILOS EXTRA para los mensajes de error */
-        .error {
-            color: #ff4d4d;
-            font-size: 0.9rem;
-            margin-top: 4px;
-            display: none;
-        }
+    <title>Vocatio - Crear Cuenta</title>
 
-        input.error-input {
-            border: 2px solid #ff4d4d;
-            background-color: #ffe6e6;
-        }
-    </style>
+    <!-- CSS del diseño unificado -->
+    <link rel="stylesheet" href="/Crear cuentas/css/Estilo-mayores.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L4NYN4CHVR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L4NYN4CHVR');
+</script>
 </head>
+
 <body>
-    <div class="decoracion-mayores">
-        <div class="elemento-decorativo elemento-1"></div>
-        <div class="elemento-decorativo elemento-2"></div>
-        <div class="elemento-decorativo elemento-3"></div>
-    </div>
-    
+
     <div class="container-registro">
         <main class="formulario-registro">
-            <div class="cuadro-azul">
-                <h1>Crear Cuenta</h1>
-                <p class="subtitulo-cuadro">
-                    Crea una nueva cuenta y accede a todas las funcionalidades disponibles!
-                </p>
-            </div>
-            
+
+            <h1 class="titulo">Crear Cuenta</h1>
+            <p class="subtitulo">Crea tu cuenta y accede a todas nuestras herramientas 🎓</p>
+
             <form id="formRegistro" novalidate>
+
                 <div class="campo">
                     <label for="nombres">Nombres</label>
                     <input type="text" id="nombres" name="nombres">
                     <div class="error" id="error-nombres">⚠️ Completa este campo</div>
                 </div>
-                
+
                 <div class="campo">
-                    <label for="email">Email</label>
+                    <label for="email">Correo electrónico</label>
                     <input type="email" id="email" name="email">
                     <div class="error" id="error-email">⚠️ Completa este campo</div>
                 </div>
-                
+
                 <div class="campo">
                     <label for="password">Contraseña</label>
                     <input type="password" id="password" name="password">
                     <div class="error" id="error-password">⚠️ Completa este campo</div>
                 </div>
-                
+
                 <div class="campo">
-                    <label for="confirmar-password">Confirmar Contraseña</label>
+                    <label for="confirmar-password">Confirmar contraseña</label>
                     <input type="password" id="confirmar-password" name="confirmar-password">
                     <div class="error" id="error-confirmar">⚠️ Completa este campo</div>
                 </div>
 
                 <button type="submit" class="btn-registro">Crear Cuenta</button>
+
             </form>
-            
+
             <div class="enlaces-adicionales">
-                <p>¿Ya tienes una cuenta? <a href="#">Iniciar Sesión</a></p>
+                <p>¿Ya tienes una cuenta? <a href="/Crear cuentas/iniciar-sesion.html">Iniciar Sesión</a></p>
                 <p>¿Olvidaste tu contraseña? <a href="#">Restablecer Contraseña</a></p>
             </div>
+
         </main>
     </div>
 
-    <script>
-        const form = document.getElementById("formRegistro");
-
-        form.addEventListener("submit", function(event) {
-            event.preventDefault(); // evita redirección
-            let valid = true;
-
-            // Campos
-            const campos = [
-                { id: "nombres", errorId: "error-nombres" },
-                { id: "email", errorId: "error-email" },
-                { id: "password", errorId: "error-password" },
-                { id: "confirmar-password", errorId: "error-confirmar" },
-            ];
-
-            // Limpiar mensajes anteriores
-            campos.forEach(({ id, errorId }) => {
-                document.getElementById(id).classList.remove("error-input");
-                document.getElementById(errorId).style.display = "none";
-            });
-
-            // Validar campos vacíos
-            campos.forEach(({ id, errorId }) => {
-                const input = document.getElementById(id);
-                if (input.value.trim() === "") {
-                    document.getElementById(errorId).style.display = "block";
-                    input.classList.add("error-input");
-                    valid = false;
-                }
-            });
-
-            // Validar contraseñas iguales si los campos no están vacíos
-            const pass = document.getElementById("password").value.trim();
-            const confirm = document.getElementById("confirmar-password").value.trim();
-            if (pass && confirm && pass !== confirm) {
-                const errorConfirm = document.getElementById("error-confirmar");
-                errorConfirm.textContent = "⚠️ Las contraseñas no coinciden";
-                errorConfirm.style.display = "block";
-                document.getElementById("confirmar-password").classList.add("error-input");
-                valid = false;
-            }
-
-            // Si todo está correcto
-            if (valid) {
-                alert("Registro exitoso ✅");
-                window.location.href = "/pages/inicio.html";
-            }
-        });
-    </script>
+    <script src="/Crear cuentas/js/crearcuenta1.js"></script>
 </body>
 </html>
