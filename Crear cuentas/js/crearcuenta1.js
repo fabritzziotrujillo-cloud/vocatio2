@@ -53,11 +53,13 @@ form.addEventListener("submit", function(event) {
     }
 
     // Nuevo usuario
-    const nuevoUsuario = {
-        nombre: document.getElementById("nombres").value.trim(),
-        email: email,
-        password: pass
-    };
+const nuevoUsuario = {
+    id: Date.now(), // ID único
+    nombre: document.getElementById("nombres").value.trim(),
+    email: email,
+    password: pass
+};
+
 
     // Guardar en array y luego en localStorage
     usuarios.push(nuevoUsuario);

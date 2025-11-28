@@ -8,7 +8,7 @@ function qs(sel) {
 // =======================
 // CARGAR USUARIO ACTUAL
 // =======================
-const usuarioActual = JSON.parse(localStorage.getItem("usuarioActual")) || null;
+let usuarioActual = JSON.parse(localStorage.getItem("usuarioActual")) || null;
 
 // Elementos visuales
 const nombreSpan = qs("#user-name");
@@ -31,10 +31,12 @@ const btnGuardar = qs("#btn-guardar");
 function applyAvatarAndName(user) {
     if (!user) return;
 
+    // Mostrar nombre
     if (nombreSpan) nombreSpan.textContent = user.nombre || "Usuario";
 
-    if (user.avatar) {
-        avatarImg.src = user.avatar;
+    // Avatar (USAR "photo", NO avatar)
+    if (user.photo) {
+        avatarImg.src = user.photo;
         avatarImg.classList.remove("hidden");
         avatarCircle.classList.add("hidden");
     } else {
@@ -53,7 +55,7 @@ function applyAvatarAndName(user) {
 }
 
 // =======================
-// MOSTRAR INFO EN FORMULARIO
+// LLENAR FORMULARIO
 // =======================
 function loadProfileFields() {
     if (!usuarioActual) return;
@@ -62,23 +64,38 @@ function loadProfileFields() {
     inputEmail.value = usuarioActual.email || "";
     inputTelefono.value = usuarioActual.telefono || "";
     inputDireccion.value = usuarioActual.direccion || "";
-    inputAvatar.value = usuarioActual.avatar || "";
+    inputAvatar.value = usuarioActual.photo || ""; // unificado
 }
 
 // =======================
-// GUARDAR CAMBIOS
+// GUARDAR CAMBIOS (COMPATIBLE CON user-info.js)
 // =======================
 if (btnGuardar) {
     btnGuardar.addEventListener("click", () => {
+
+        // Crear objeto actualizado
         const actualizado = {
             ...usuarioActual,
             nombre: inputNombre.value.trim(),
             telefono: inputTelefono.value.trim(),
             direccion: inputDireccion.value.trim(),
-            avatar: inputAvatar.value.trim()
+            photo: inputAvatar.value.trim() || null   // Imagen unificada
         };
 
+        // Guardar sesión
         localStorage.setItem("usuarioActual", JSON.stringify(actualizado));
+
+        // Actualizar lista global usuariosRegistrados
+        const users = JSON.parse(localStorage.getItem("usuariosRegistrados")) || [];
+        const idx = users.findIndex(u => u.email === actualizado.email);
+
+        if (idx !== -1) {
+            users[idx] = actualizado;
+            localStorage.setItem("usuariosRegistrados", JSON.stringify(users));
+        }
+
+        usuarioActual = actualizado;
+
         applyAvatarAndName(actualizado);
 
         alert("¡Cambios guardados!");

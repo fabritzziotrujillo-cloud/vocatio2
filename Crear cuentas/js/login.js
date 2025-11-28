@@ -36,10 +36,12 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Guardar sesión del usuario
-        localStorage.setItem("usuarioActual", JSON.stringify(usuario));
+        // Guardar sesión del usuario (sin mezclar cuentas)
+        localStorage.setItem("sesionActiva", JSON.stringify({
+            id: usuario.id
+        }));
 
-        // ir a inicio
+        // REDIRECCIÓN (esto faltaba)
         window.location.href = "/pages/inicio.html";
     });
 

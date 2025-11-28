@@ -1066,3 +1066,8 @@
 .btn-logout-red:hover {
   background: #c62828;
 }
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* separación entre inputs y mensajes */
+}

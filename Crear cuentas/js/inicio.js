@@ -1,0 +1,9 @@
+// Recuperar la sesión
+const sesion = JSON.parse(localStorage.getItem("sesionActiva"));
+const usuarios = JSON.parse(localStorage.getItem("usuariosRegistrados")) || [];
+const usuarioActual = usuarios.find(u => u.id === sesion?.id);
+
+// Si no hay usuario logeado → mandar al login
+if (!usuarioActual) {
+    window.location.href = "/Crear cuentas/iniciar-sesion.html";
+}

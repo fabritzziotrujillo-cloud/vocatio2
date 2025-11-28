@@ -140,14 +140,6 @@
             <i data-lucide="user"></i>
             <span>Información Personal</span>
           </label>
-          <label for="tab-educativa" class="tab-btn">
-            <i data-lucide="graduation-cap"></i>
-            <span>Información Educativa</span>
-          </label>
-          <label for="tab-preferencias" class="tab-btn">
-            <i data-lucide="heart"></i>
-            <span>Preferencias Vocacionales</span>
-          </label>
           <label for="tab-privacidad" class="tab-btn">
             <i data-lucide="shield"></i>
             <span>Privacidad y Cuenta</span>
@@ -157,377 +149,93 @@
     </section>
 
     <!-- Tab Content: Información Personal -->
-    <section class="config-content">
-      <div class="container">
-        <div class="tab-content" data-tab="personal">
-          <div class="content-header">
-            <h2 class="content-title">Información Personal</h2>
-            <p class="content-desc">Actualiza tu información básica y de contacto</p>
-          </div>
+   <section class="config-content">
+  <div class="container">
 
-          <form class="config-form">
-            <!-- Profile Photo -->
-            <div class="form-section">
-              <h3 class="section-title">Foto de Perfil</h3>
-              <div class="profile-photo-upload">
-    <div class="photo-info">
-      <div class="current-photo">MG</div>
-      <span class="profile-name" id="nombre-display">María González</span>
-    </div>
-    
-    <div class="photo-actions">
+    <!-- IMPORTANT: Un solo form que contiene todas las pestañas -->
+    <form id="configForm" class="config-form">
 
-                  <label class="btn-upload">
-                    <i data-lucide="camera"></i>
-                    Cambiar foto
-                    <input type="file" accept="image/*" hidden>
-                  </label>
-                  <button type="button" class="btn-remove">
-                    <i data-lucide="trash-2"></i>
-                    Eliminar
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Basic Info -->
-            <div class="form-section">
-              <h3 class="section-title">Información Básica</h3>
-              <div class="form-grid">
-                <div class="form-group">
-                  <label for="nombre" class="form-label">Nombre completo *</label>
-                  <input type="text" id="nombre" class="form-input" value="María González" required>
-                </div>
-
-                <div class="form-group">
-                  <label for="email" class="form-label">Correo electrónico *</label>
-                  <input type="email" id="email" class="form-input" value="maria.gonzalez@email.com" required>
-                </div>
-
-                <div class="form-group">
-                  <label for="telefono" class="form-label">Teléfono</label>
-                  <input type="tel" id="telefono" class="form-input" value="+51 987 654 321">
-                </div>
-
-                <div class="form-group">
-                  <label for="fecha-nacimiento" class="form-label">Fecha de nacimiento</label>
-                  <input type="date" id="fecha-nacimiento" class="form-input" value="2005-03-15">
-                </div>
-
-                <div class="form-group">
-                  <label for="genero" class="form-label">Género</label>
-                  <select id="genero" class="form-select">
-                    <option value="">Seleccionar</option>
-                    <option value="femenino" selected>Femenino</option>
-                    <option value="masculino">Masculino</option>
-                    <option value="otro">Otro</option>
-                    <option value="prefiero-no-decir">Prefiero no decir</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="ubicacion" class="form-label">Ubicación</label>
-                  <input type="text" id="ubicacion" class="form-input" value="Lima, Perú">
-                </div>
-              </div>
-            </div>
-
-            <!-- Bio -->
-            <div class="form-section">
-              <h3 class="section-title">Biografía</h3>
-              <div class="form-group">
-                <label for="bio" class="form-label">Cuéntanos un poco sobre ti</label>
-                <textarea id="bio" class="form-textarea" rows="4" placeholder="Escribe una breve descripción sobre tus intereses, metas y aspiraciones...">Estudiante apasionada por la tecnología y el diseño. Me encanta resolver problemas y crear soluciones innovadoras.</textarea>
-                <span class="form-hint">Máximo 300 caracteres</span>
-              </div>
-            </div>
-
-            <div class="form-actions">
-              <button type="button" class="btn-secondary">Cancelar</button>
-              <button type="submit" class="btn-primary">Guardar Cambios</button>
-              <button type="button" id="logoutBtn" class="btn-logout-red">Cerrar sesión</button>
-
-
-            </div>
-          </form>
+      <!-- TAB Personal -->
+      <div class="tab-content" data-tab="personal">
+        <div class="content-header">
+          <h2 class="content-title">Información Personal</h2>
+          <p class="content-desc">Actualiza tu información básica y de contacto</p>
         </div>
 
-        <!-- Tab Content: Información Educativa -->
-        <div class="tab-content" data-tab="educativa">
-          <div class="content-header">
-            <h2 class="content-title">Información Educativa</h2>
-            <p class="content-desc">Gestiona tu historial académico y logros</p>
-          </div>
-
-          <form class="config-form">
-            <!-- Current Education -->
-            <div class="form-section">
-              <h3 class="section-title">Educación Actual</h3>
-              <div class="form-grid">
-                <div class="form-group">
-                  <label for="nivel-educativo" class="form-label">Nivel educativo *</label>
-                  <select id="nivel-educativo" class="form-select" required>
-                    <option value="">Seleccionar</option>
-                    <option value="secundaria" selected>Secundaria</option>
-                    <option value="tecnico">Educación Técnica</option>
-                    <option value="universitario">Universitario</option>
-                    <option value="postgrado">Postgrado</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="grado-actual" class="form-label">Grado/Año actual</label>
-                  <select id="grado-actual" class="form-select">
-                    <option value="">Seleccionar</option>
-                    <option value="3">3er año</option>
-                    <option value="4">4to año</option>
-                    <option value="5" selected>5to año</option>
-                  </select>
-                </div>
-
-                <div class="form-group full-width">
-                  <label for="institucion" class="form-label">Institución educativa *</label>
-                  <input type="text" id="institucion" class="form-input" value="Colegio San Agustín" required>
-                </div>
-
-                <div class="form-group">
-                  <label for="promedio" class="form-label">Promedio general</label>
-                  <input type="text" id="promedio" class="form-input" value="17.5" placeholder="0.00 - 20.00">
-                </div>
-
-                <div class="form-group">
-                  <label for="ano-graduacion" class="form-label">Año de graduación (esperado)</label>
-                  <input type="number" id="ano-graduacion" class="form-input" value="2024" min="2024" max="2030">
-                </div>
-              </div>
+        <!-- Profile Photo -->
+        <div class="form-section">
+          <h3 class="section-title">Foto de Perfil</h3>
+          <div class="profile-photo-upload">
+            <div class="photo-info">
+              <div class="current-photo" id="current-photo">MG</div>
+              <span class="profile-name" id="nombre-display">María González</span>
             </div>
-
-            <!-- Academic Interests -->
-            <div class="form-section">
-              <h3 class="section-title">Áreas de Interés Académico</h3>
-              <div class="interests-grid">
-                <label class="interest-checkbox">
-                  <input type="checkbox" checked>
-                  <span class="interest-label">
-                    <i data-lucide="cpu"></i>
-                    Tecnología
-                  </span>
-                </label>
-                <label class="interest-checkbox">
-                  <input type="checkbox" checked>
-                  <span class="interest-label">
-                    <i data-lucide="palette"></i>
-                    Arte y Diseño
-                  </span>
-                </label>
-                <label class="interest-checkbox">
-                  <input type="checkbox">
-                  <span class="interest-label">
-                    <i data-lucide="activity"></i>
-                    Salud
-                  </span>
-                </label>
-                <label class="interest-checkbox">
-                  <input type="checkbox">
-                  <span class="interest-label">
-                    <i data-lucide="trending-up"></i>
-                    Negocios
-                  </span>
-                </label>
-                <label class="interest-checkbox">
-                  <input type="checkbox" checked>
-                  <span class="interest-label">
-                    <i data-lucide="beaker"></i>
-                    Ciencias
-                  </span>
-                </label>
-                <label class="interest-checkbox">
-                  <input type="checkbox">
-                  <span class="interest-label">
-                    <i data-lucide="scale"></i>
-                    Derecho
-                  </span>
-                </label>
-                <label class="interest-checkbox">
-                  <input type="checkbox">
-                  <span class="interest-label">
-                    <i data-lucide="book-open"></i>
-                    Humanidades
-                  </span>
-                </label>
-                <label class="interest-checkbox">
-                  <input type="checkbox">
-                  <span class="interest-label">
-                    <i data-lucide="users"></i>
-                    Ciencias Sociales
-                  </span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Achievements -->
-            <div class="form-section">
-              <h3 class="section-title">Logros y Certificaciones</h3>
-              <div class="achievement-list">
-                <div class="achievement-item">
-                  <i data-lucide="award"></i>
-                  <span>Premio Nacional de Matemáticas 2023</span>
-                  <button type="button" class="btn-icon-remove">
-                    <i data-lucide="x"></i>
-                  </button>
-                </div>
-                <div class="achievement-item">
-                  <i data-lucide="award"></i>
-                  <span>Certificación en Programación Python</span>
-                  <button type="button" class="btn-icon-remove">
-                    <i data-lucide="x"></i>
-                  </button>
-                </div>
-              </div>
-              <button type="button" class="btn-add">
-                <i data-lucide="plus"></i>
-                Agregar logro o certificación
+            <div class="photo-actions">
+              <label class="btn-upload">
+                <i data-lucide="camera"></i>
+                Cambiar foto
+                <input id="file-photo" type="file" accept="image/*" hidden>
+              </label>
+              <button type="button" class="btn-remove" id="btn-remove-photo">
+                <i data-lucide="trash-2"></i>
+                Eliminar
               </button>
             </div>
-
-            <div class="form-actions">
-              <button type="button" class="btn-secondary">Cancelar</button>
-              <button type="submit" class="btn-primary">Guardar Cambios</button>
-            </div>
-          </form>
-        </div>
-
-        <!-- Tab Content: Preferencias Vocacionales -->
-        <div class="tab-content" data-tab="preferencias">
-          <div class="content-header">
-            <h2 class="content-title">Preferencias Vocacionales</h2>
-            <p class="content-desc">Define tus preferencias para obtener recomendaciones personalizadas</p>
           </div>
-
-          <form class="config-form">
-            <!-- Career Preferences -->
-            <div class="form-section">
-              <h3 class="section-title">Preferencias de Carrera</h3>
-              <div class="form-grid">
-                <div class="form-group full-width">
-                  <label for="modalidad-estudio" class="form-label">Modalidad de estudio preferida</label>
-                  <select id="modalidad-estudio" class="form-select">
-                    <option value="">Seleccionar</option>
-                    <option value="presencial" selected>Presencial</option>
-                    <option value="virtual">Virtual</option>
-                    <option value="hibrida">Híbrida</option>
-                    <option value="sin-preferencia">Sin preferencia</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="duracion-preferida" class="form-label">Duración preferida de estudios</label>
-                  <select id="duracion-preferida" class="form-select">
-                    <option value="">Seleccionar</option>
-                    <option value="2-3">2-3 años (Técnico)</option>
-                    <option value="4-5" selected>4-5 años (Profesional)</option>
-                    <option value="5+">5+ años (Especialización)</option>
-                    <option value="sin-preferencia">Sin preferencia</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="presupuesto" class="form-label">Presupuesto mensual (opcional)</label>
-                  <select id="presupuesto" class="form-select">
-                    <option value="">Seleccionar</option>
-                    <option value="bajo">Menos de S/500</option>
-                    <option value="medio" selected>S/500 - S/1500</option>
-                    <option value="alto">S/1500 - S/3000</option>
-                    <option value="muy-alto">Más de S/3000</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <!-- Work Environment -->
-            <div class="form-section">
-              <h3 class="section-title">Ambiente de Trabajo Ideal</h3>
-              <div class="preference-cards">
-                <label class="preference-card">
-                  <input type="radio" name="ambiente" value="oficina" checked>
-                  <div class="card-content">
-                    <i data-lucide="building-2"></i>
-                    <span>Oficina tradicional</span>
-                  </div>
-                </label>
-                <label class="preference-card">
-                  <input type="radio" name="ambiente" value="remoto">
-                  <div class="card-content">
-                    <i data-lucide="home"></i>
-                    <span>Remoto</span>
-                  </div>
-                </label>
-                <label class="preference-card">
-                  <input type="radio" name="ambiente" value="hibrido">
-                  <div class="card-content">
-                    <i data-lucide="laptop"></i>
-                    <span>Híbrido</span>
-                  </div>
-                </label>
-                <label class="preference-card">
-                  <input type="radio" name="ambiente" value="campo">
-                  <div class="card-content">
-                    <i data-lucide="map-pin"></i>
-                    <span>Trabajo de campo</span>
-                  </div>
-                </label>
-              </div>
-            </div>
-
-            <!-- Skills -->
-            <div class="form-section">
-              <h3 class="section-title">Habilidades que te Gustaría Desarrollar</h3>
-              <div class="skills-tags">
-                <label class="skill-tag">
-                  <input type="checkbox" checked>
-                  <span>Programación</span>
-                </label>
-                <label class="skill-tag">
-                  <input type="checkbox" checked>
-                  <span>Diseño Gráfico</span>
-                </label>
-                <label class="skill-tag">
-                  <input type="checkbox">
-                  <span>Liderazgo</span>
-                </label>
-                <label class="skill-tag">
-                  <input type="checkbox">
-                  <span>Comunicación</span>
-                </label>
-                <label class="skill-tag">
-                  <input type="checkbox" checked>
-                  <span>Análisis de Datos</span>
-                </label>
-                <label class="skill-tag">
-                  <input type="checkbox">
-                  <span>Marketing Digital</span>
-                </label>
-                <label class="skill-tag">
-                  <input type="checkbox">
-                  <span>Gestión de Proyectos</span>
-                </label>
-                <label class="skill-tag">
-                  <input type="checkbox">
-                  <span>Idiomas</span>
-                </label>
-              </div>
-              <button type="button" class="btn-add">
-                <i data-lucide="plus"></i>
-                Agregar habilidad personalizada
-              </button>
-            </div>
-
-            <div class="form-actions">
-              <button type="button" class="btn-secondary">Cancelar</button>
-              <button type="submit" class="btn-primary">Guardar Cambios</button>
-            </div>
-          </form>
         </div>
+
+        <!-- Basic Info -->
+        <div class="form-section">
+          <h3 class="section-title">Información Básica</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="nombre" class="form-label">Nombre completo *</label>
+              <input type="text" id="nombre" name="nombre" class="form-input" value="María González" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Correo electrónico *</label>
+              <input type="email" id="email" name="email" class="form-input" value="maria.gonzalez@email.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" class="form-input" value="+51 987 654 321">
+            </div>
+
+            <div class="form-group">
+              <label for="fecha-nacimiento" class="form-label">Fecha de nacimiento</label>
+              <input type="date" id="fecha-nacimiento" name="fechaNacimiento" class="form-input" value="2005-03-15">
+            </div>
+
+            <div class="form-group">
+              <label for="genero" class="form-label">Género</label>
+              <select id="genero" name="genero" class="form-select">
+                <option value="">Seleccionar</option>
+                <option value="femenino">Femenino</option>
+                <option value="masculino">Masculino</option>
+                <option value="otro">Otro</option>
+                <option value="prefiero-no-decir">Prefiero no decir</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="ubicacion" class="form-label">Ubicación</label>
+              <input type="text" id="ubicacion" name="ubicacion" class="form-input" value="Lima, Perú">
+            </div>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div class="form-section">
+          <h3 class="section-title">Biografía</h3>
+          <div class="form-group">
+            <label for="bio" class="form-label">Cuéntanos un poco sobre ti</label>
+            <textarea id="bio" name="bio" class="form-textarea" rows="4">Estudiante apasionada por la tecnología y el diseño. Me encanta resolver problemas y crear soluciones innovadoras.</textarea>
+            <span class="form-hint">Máximo 300 caracteres</span>
+          </div>
+        </div>
+      </div>
 
         <!-- Tab Content: Privacidad y Cuenta -->
         <div class="tab-content" data-tab="privacidad">
@@ -536,7 +244,7 @@
             <p class="content-desc">Gestiona tu privacidad y seguridad de la cuenta</p>
           </div>
 
-          <form class="config-form">
+          <div class="config-form">
             <!-- Password -->
             <div class="form-section">
               <h3 class="section-title">Cambiar Contraseña</h3>
@@ -554,56 +262,11 @@
                   <input type="password" id="password-confirmar" class="form-input">
                 </div>
               </div>
-            </div>
+              <button type="button" id="btnGuardarPassword" class="btn-primary">
+  Guardar nueva contraseña
+</button>
 
-            <!-- Privacy Settings -->
-            <div class="form-section">
-              <h3 class="section-title">Configuración de Privacidad</h3>
-              <div class="privacy-options">
-                <div class="privacy-item">
-                  <div class="privacy-info">
-                    <h4>Perfil público</h4>
-                    <p>Permite que otros usuarios vean tu perfil y actividad</p>
-                  </div>
-                  <label class="toggle-switch">
-                    <input type="checkbox" checked>
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
 
-                <div class="privacy-item">
-                  <div class="privacy-info">
-                    <h4>Mostrar carreras favoritas</h4>
-                    <p>Muestra tus carreras favoritas en tu perfil público</p>
-                  </div>
-                  <label class="toggle-switch">
-                    <input type="checkbox" checked>
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
-
-                <div class="privacy-item">
-                  <div class="privacy-info">
-                    <h4>Mostrar resultados de tests</h4>
-                    <p>Permite que otros vean tus resultados de tests vocacionales</p>
-                  </div>
-                  <label class="toggle-switch">
-                    <input type="checkbox">
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
-
-                <div class="privacy-item">
-                  <div class="privacy-info">
-                    <h4>Permitir mensajes directos</h4>
-                    <p>Permite que otros usuarios te envíen mensajes</p>
-                  </div>
-                  <label class="toggle-switch">
-                    <input type="checkbox" checked>
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
-              </div>
             </div>
 
             <!-- Danger Zone -->
@@ -630,6 +293,7 @@
                     <i data-lucide="trash-2"></i>
                     Eliminar cuenta
                   </button>
+                  
                 </div>
               </div>
             </div>
@@ -637,8 +301,11 @@
             <div class="form-actions">
               <button type="button" class="btn-secondary">Cancelar</button>
               <button type="submit" class="btn-primary">Guardar Cambios</button>
+              <button type="button" id="logoutBtnConfig" class="btn-logout-red">Cerrar sesión</button>
+
             </div>
-          </form>
+          </div>
+
         </div>
 
       </div>
@@ -802,17 +469,91 @@
 <script>
     document.getElementById("logoutBtn").addEventListener("click", function () {
         // Limpiar datos de sesión
-        localStorage.clear();
-        sessionStorage.clear();
+  localStorage.removeItem("sesionActiva");
+sessionStorage.removeItem("sesionActiva");
 
         // Redirigir al login
-        window.location.href = "login.html"; 
+    window.location.href = "/Crear cuentas/iniciar-sesion.html";
     });
 </script>
+<script>
+// Cerrar sesión desde el menú del avatar
+document.getElementById("logoutBtn").addEventListener("click", function () {
+localStorage.removeItem("sesionActiva");
+sessionStorage.removeItem("sesionActiva");
 
+    window.location.href = "/Crear cuentas/iniciar-sesion.html";
+});
 
+// Cerrar sesión desde el botón rojo de Configuración
+document.getElementById("logoutBtnConfig").addEventListener("click", function () {
+localStorage.removeItem("sesionActiva");
+sessionStorage.removeItem("sesionActiva");
 
+    window.location.href = "/Crear cuentas/iniciar-sesion.html";
+});
+</script>
+  <script src="/Crear cuentas/js/inicio.js"></script>
+
+<script src="/pages/Perfil/js/configuracion-perfil.js"></script>
   <script src="/pages/Perfil/js/nuevo-perfil.js"></script>
   <script src="/pages/js/user-info.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const btnEliminarCuenta = document.querySelector(".btn-danger"); 
+  const modal = document.getElementById("modalEliminarCuenta");
+  const btnConfirmar = document.getElementById("btnConfirmarEliminar");
+  const btnCancelar = document.getElementById("btnCancelarEliminar");
+
+  // Obtener sesión actual
+  const sesion = JSON.parse(localStorage.getItem("sesionActiva"));
+  const usuarios = JSON.parse(localStorage.getItem("usuariosRegistrados")) || [];
+
+  // Abrir modal
+  btnEliminarCuenta.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
+
+  // Cancelar → cierra modal
+  btnCancelar.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // Confirmar eliminación
+  btnConfirmar.addEventListener("click", () => {
+    if (!sesion) return;
+
+    // 1. Eliminar usuario del array
+    const nuevosUsuarios = usuarios.filter(u => u.id !== sesion.id);
+    localStorage.setItem("usuariosRegistrados", JSON.stringify(nuevosUsuarios));
+
+    // 2. Eliminar sesión
+    localStorage.removeItem("sesionActiva");
+    sessionStorage.removeItem("sesionActiva");
+
+    // 3. Cerrar modal
+    modal.style.display = "none";
+
+    // 4. Redirigir
+    window.location.href = "/Crear cuentas/iniciar-sesion.html";
+  });
+
+});
+</script>
+
+  <!-- Modal de Confirmación para Eliminar Cuenta -->
+<div id="modalEliminarCuenta" class="modal-overlay" style="display: none;">
+  <div class="modal-box">
+    <h2>¿Eliminar tu cuenta?</h2>
+    <p>Esta acción es permanente. Todos tus datos serán eliminados y no podrás recuperarlos.</p>
+
+    <div class="modal-buttons">
+      <button id="btnConfirmarEliminar" class="modal-btn modal-btn-confirm">Sí, eliminar</button>
+      <button id="btnCancelarEliminar" class="modal-btn modal-btn-cancel">Cancelar</button>
+    </div>
+  </div>
+</div>
+
   </body>
   </html>
