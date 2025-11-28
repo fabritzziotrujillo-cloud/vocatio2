@@ -54,24 +54,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ---------- Avatar + Nombre ----------
-  const applyAvatarAndName = (user={}) => {
-    const initials = getIniciales(user.nombre || "U");
+// ---------- Avatar + Nombre (Navbar) ----------
+const applyAvatarAndName = (user = {}) => {
 
-    // foto grande (en configuración)
-    if (avatarEl) {
-      if (user.photo) {
-        avatarEl.style.backgroundImage = `url('${user.photo}')`;
-        avatarEl.textContent = "";
-      } else {
-        avatarEl.style.backgroundImage = "";
-        avatarEl.textContent = initials;
-      }
-    }
+  // Obtener iniciales
+  const initials = getIniciales(user.nombre || "U");
 
-    // navbar avatar
-    if (navUserEl) {
-      navUserEl.innerHTML = `
-        <div class="nav-user-circle" style="
+  // ======= NAVBAR =======
+  const navUserEl = document.getElementById("nav-user");
+  if (navUserEl) {
+    navUserEl.innerHTML = `
+      <div class="nav-user-circle" style="
           width: 38px;
           height: 38px;
           border-radius: 50%;
@@ -82,35 +75,45 @@ document.addEventListener("DOMContentLoaded", () => {
           align-items: center;
           font-weight: bold;
           color: white;
-        ">
-          ${user.photo ? "" : initials}
-        </div>
-        <span class="nav-user-name">${user.nombre || ""}</span>
-      `;
+      ">
+        ${user.photo ? "" : initials}
+      </div>
+      <span class="nav-user-name">${user.nombre || "Usuario"}</span>
+    `;
 
-      // si hay foto → ponerla como fondo del círculo
-      const navCircle = navUserEl.querySelector(".nav-user-circle");
-      if (user.photo) {
-        navCircle.style.backgroundImage = `url('${user.photo}')`;
-      }
+    const circle = navUserEl.querySelector(".nav-user-circle");
+    if (user.photo) circle.style.backgroundImage = `url('${user.photo}')`;
+  }
+
+  // ======= FOTO GRANDE (perfil) =======
+  if (avatarEl) {
+    if (user.photo) {
+      avatarEl.style.backgroundImage = `url('${user.photo}')`;
+      avatarEl.textContent = "";
+    } else {
+      avatarEl.style.backgroundImage = "";
+      avatarEl.textContent = initials;
     }
+  }
 
-    if (greetingEl)
-      greetingEl.textContent = `¡Hola ${user.nombre || "Usuario"}! ¿Listo para descubrir tu vocación?`;
+  // ======= Otros textos =======
+  if (greetingEl)
+    greetingEl.textContent = `¡Hola ${user.nombre || "Usuario"}! ¿Listo para descubrir tu vocación?`;
 
-    if (profileNameSpan)
-      profileNameSpan.textContent = user.nombre || "";
+  if (profileNameSpan)
+    profileNameSpan.textContent = user.nombre || "";
 
-    if (photoCircle) {
-      if (user.photo) {
-        photoCircle.style.backgroundImage = `url('${user.photo}')`;
-        photoCircle.textContent = "";
-      } else {
-        photoCircle.style.backgroundImage = "";
-        photoCircle.textContent = initials;
-      }
+  if (photoCircle) {
+    if (user.photo) {
+      photoCircle.style.backgroundImage = `url('${user.photo}')`;
+      photoCircle.textContent = "";
+    } else {
+      photoCircle.style.backgroundImage = "";
+      photoCircle.textContent = initials;
     }
-  };
+  }
+};
+
 
   // ---------- Load session ----------
   let usuario = getSession();
@@ -159,6 +162,12 @@ document.addEventListener("DOMContentLoaded", () => {
         setSession(usuario);
         upsertUserByEmail(usuario.email, usuario);
         applyAvatarAndName(usuario);
+        // Si el navbar aparece después (HTML cargado por componentes), esperar 100ms
+setTimeout(() => {
+  const again = document.getElementById("nav-user");
+  if (again) applyAvatarAndName(usuario);
+}, 120);
+
       };
       fr.readAsDataURL(file);
     });
