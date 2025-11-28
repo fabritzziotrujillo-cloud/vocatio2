@@ -167,8 +167,8 @@
           <h3 class="section-title">Foto de Perfil</h3>
           <div class="profile-photo-upload">
             <div class="photo-info">
-              <div class="current-photo" id="current-photo">MG</div>
-              <span class="profile-name" id="nombre-display">María González</span>
+              <div class="current-photo" id="current-photo"></div>
+              <span class="profile-name" id="nombre-display"></span>
             </div>
             <div class="photo-actions">
               <label class="btn-upload">
@@ -190,22 +190,22 @@
           <div class="form-grid">
             <div class="form-group">
               <label for="nombre" class="form-label">Nombre completo *</label>
-              <input type="text" id="nombre" name="nombre" class="form-input" value="María González" required>
+              <input type="text" id="nombre" name="nombre" class="form-input" value="" required>
             </div>
 
             <div class="form-group">
               <label for="email" class="form-label">Correo electrónico *</label>
-              <input type="email" id="email" name="email" class="form-input" value="maria.gonzalez@email.com" required>
+              <input type="email" id="email" name="email" class="form-input" value="" required>
             </div>
 
             <div class="form-group">
               <label for="telefono" class="form-label">Teléfono</label>
-              <input type="tel" id="telefono" name="telefono" class="form-input" value="+51 987 654 321">
+              <input type="tel" id="telefono" name="telefono" class="form-input" value="">
             </div>
 
             <div class="form-group">
               <label for="fecha-nacimiento" class="form-label">Fecha de nacimiento</label>
-              <input type="date" id="fecha-nacimiento" name="fechaNacimiento" class="form-input" value="2005-03-15">
+              <input type="date" id="fecha-nacimiento" name="fechaNacimiento" class="form-input" value="">
             </div>
 
             <div class="form-group">
@@ -221,7 +221,7 @@
 
             <div class="form-group">
               <label for="ubicacion" class="form-label">Ubicación</label>
-              <input type="text" id="ubicacion" name="ubicacion" class="form-input" value="Lima, Perú">
+              <input type="text" id="ubicacion" name="ubicacion" class="form-input" value="">
             </div>
           </div>
         </div>
@@ -231,7 +231,7 @@
           <h3 class="section-title">Biografía</h3>
           <div class="form-group">
             <label for="bio" class="form-label">Cuéntanos un poco sobre ti</label>
-            <textarea id="bio" name="bio" class="form-textarea" rows="4">Estudiante apasionada por la tecnología y el diseño. Me encanta resolver problemas y crear soluciones innovadoras.</textarea>
+            <textarea id="bio" name="bio" class="form-textarea" rows="4"></textarea>
             <span class="form-hint">Máximo 300 caracteres</span>
           </div>
         </div>
@@ -501,45 +501,58 @@ sessionStorage.removeItem("sesionActiva");
   <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  const btnEliminarCuenta = document.querySelector(".btn-danger"); 
+  const K_USERS = "usuariosRegistrados";
+  const K_SESSION = "usuarioActual";
+
+  const readUsers = () => JSON.parse(localStorage.getItem(K_USERS)) || [];
+  const writeUsers = (u) => localStorage.setItem(K_USERS, JSON.stringify(u));
+
+  const getSession = () => JSON.parse(localStorage.getItem(K_SESSION));
+  const setSession = (u) => {
+    if (!u) return localStorage.removeItem(K_SESSION);
+    localStorage.setItem(K_SESSION, JSON.stringify(u));
+  };
+
+  const btnEliminar = document.querySelector(".btn-danger"); 
   const modal = document.getElementById("modalEliminarCuenta");
   const btnConfirmar = document.getElementById("btnConfirmarEliminar");
   const btnCancelar = document.getElementById("btnCancelarEliminar");
 
-  // Obtener sesión actual
-  const sesion = JSON.parse(localStorage.getItem("sesionActiva"));
-  const usuarios = JSON.parse(localStorage.getItem("usuariosRegistrados")) || [];
+  let usuario = getSession();
 
-  // Abrir modal
-  btnEliminarCuenta.addEventListener("click", () => {
+  if (!usuario) return; // no hay sesión → nada que eliminar
+
+  // --- Abrir modal ---
+  btnEliminar.addEventListener("click", () => {
     modal.style.display = "flex";
   });
 
-  // Cancelar → cierra modal
+  // --- Cancelar ---
   btnCancelar.addEventListener("click", () => {
     modal.style.display = "none";
   });
 
-  // Confirmar eliminación
+  // --- Confirmar eliminación ---
   btnConfirmar.addEventListener("click", () => {
-    if (!sesion) return;
 
-    // 1. Eliminar usuario del array
-    const nuevosUsuarios = usuarios.filter(u => u.id !== sesion.id);
-    localStorage.setItem("usuariosRegistrados", JSON.stringify(nuevosUsuarios));
+    const usuarios = readUsers();
 
-    // 2. Eliminar sesión
-    localStorage.removeItem("sesionActiva");
-    sessionStorage.removeItem("sesionActiva");
+    // Eliminar al usuario usando su EMAIL (único)
+    const nuevosUsuarios = usuarios.filter(u => u.email !== usuario.email);
+    writeUsers(nuevosUsuarios);
 
-    // 3. Cerrar modal
+    // Eliminar sesión
+    setSession(null);
+
+    // Cerrar modal
     modal.style.display = "none";
 
-    // 4. Redirigir
+    // Redirigir
     window.location.href = "/Crear cuentas/iniciar-sesion.html";
   });
 
 });
+
 </script>
 
   <!-- Modal de Confirmación para Eliminar Cuenta -->
@@ -554,6 +567,55 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const usuario = JSON.parse(localStorage.getItem("usuarioActual"));
+
+  // Si no hay sesión → al login
+  if (!usuario) {
+    window.location.href = "/Crear cuentas/iniciar-sesion.html";
+    return;
+  }
+
+  // ---------- Mostrar en navbar ----------
+  const navUser = document.getElementById("nav-user");
+
+  if (navUser) {
+    navUser.innerHTML = `
+      <div class="nav-user-circle">${usuario.nombre[0]}</div>
+      <span class="nav-user-name">${usuario.nombre}</span>
+    `;
+  }
+
+  // ---------- Mostrar en Información Personal ----------
+  // Foto inicial (iniciales)
+  const currentPhoto = document.getElementById("current-photo");
+  if (currentPhoto) {
+    const iniciales = usuario.nombre
+      .split(" ")
+      .map(p => p[0])
+      .join("")
+      .toUpperCase();
+    currentPhoto.textContent = iniciales;
+  }
+
+  // Nombre visible
+  const nombreDisplay = document.getElementById("nombre-display");
+  if (nombreDisplay) {
+    nombreDisplay.textContent = usuario.nombre;
+  }
+
+  // Campos del formulario
+  document.getElementById("nombre").value = usuario.nombre || "";
+  document.getElementById("email").value = usuario.email || "";
+  document.getElementById("telefono").value = usuario.telefono || "";
+  document.getElementById("fecha-nacimiento").value = usuario.fechaNacimiento || "";
+  document.getElementById("ubicacion").value = usuario.ubicacion || "";
+  document.getElementById("bio").value = usuario.bio || "";
+  document.getElementById("genero").value = usuario.genero || "";
+});
+</script>
 
   </body>
   </html>
