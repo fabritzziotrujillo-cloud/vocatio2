@@ -91,8 +91,27 @@
   recoContainer.appendChild(rcard);
 
   // ---------------- DESCARGAR PDF ----------------
-  document.getElementById("btnDescargar").addEventListener("click", () => {
-    alert("Aún no programo el PDF, pero si quieres lo hago ahora.");
+  document.getElementById("btnDescargar").addEventListener("click", async () => {
+
+    const resultContainer = document.querySelector(".resultados-container");
+
+    const { jsPDF } = window.jspdf;
+
+    const canvas = await html2canvas(resultContainer, {
+      scale: 2,
+      useCORS: true
+    });
+
+    const imgData = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF("p", "mm", "a4");
+
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+
+    pdf.save(`Resultado_${data.topArea}.pdf`);
   });
 
 })();
