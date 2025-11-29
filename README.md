@@ -121,6 +121,7 @@ Esta paleta combina tonos frescos y vibrantes que funcionan tanto para jóvenes 
 
 ### Test Vocacional Gamificado ✨
 - Sistema de niveles progresivos (Nivel 1-5)
+- video tutorial para elegir carrera
 - Preguntas con imágenes atractivas
 - Respuestas simples: Sí/No/Omitir
 - Feedback instantáneo visual ("¡ME IDENTIFICO!")
@@ -256,5 +257,6 @@ Desarrollado como proyecto de aprendizaje web.
 
 ---
 
-**Versión**: 1.0.0  
+**Versión**: 1.0.1
+
 **Última actualización**: Noviembre 2025
