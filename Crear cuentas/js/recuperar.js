@@ -20,6 +20,8 @@ function showModal(titulo, mensaje) {
   overlay.querySelector(".modal-btn-confirm").onclick = () => overlay.remove();
 }
 
+
+
 // ============================
 // 1. ENVIAR CÓDIGO AL CORREO
 // ============================
@@ -45,14 +47,27 @@ if (formRestablecer) {
     localStorage.setItem("codigoRecuperacion", codigo);
     localStorage.setItem("emailRecuperacion", email);
 
-    showModal("Código enviado",
-      "Hemos enviado un código a tu correo. Ingresa el código para continuar.");
+    // === ENVÍO REAL DEL CORREO ===
+    emailjs.send("service_vutfozg", "template_tqcds1a", {
+      to_email: email,
+      codigo: codigo
+    }, "_CUsIZDMuhL0m3B2u")
+    .then(() => {
+      showModal("Código enviado", "Hemos enviado el código a tu correo.");
 
-    setTimeout(() => {
-      window.location.href = "verificar-codigo.html";
-    }, 1000);
+      setTimeout(() => {
+        window.location.href = "verificar-codigo.html";
+      }, 1000);
+    })
+    .catch((err) => {
+      console.error(err);
+      showModal("Error", "No se pudo enviar el correo.");
+    });
+
   });
 }
+
+
 
 // ============================
 // 2. VERIFICAR CÓDIGO
@@ -72,13 +87,14 @@ if (formVerificar) {
       return;
     }
 
-    // Aprobado
     localStorage.setItem("codigoValidado", "true");
 
     window.location.href = "nueva-password.html";
   });
 
 }
+
+
 
 // ============================
 // 3. GUARDAR NUEVA CONTRASEÑA
@@ -113,7 +129,6 @@ if (formNuevaPass) {
       localStorage.setItem("usuariosRegistrados", JSON.stringify(usuarios));
     }
 
-    // Limpiar temporales
     localStorage.removeItem("codigoRecuperacion");
     localStorage.removeItem("codigoValidado");
     localStorage.removeItem("emailRecuperacion");
